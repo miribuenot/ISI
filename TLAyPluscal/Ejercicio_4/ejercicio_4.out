@@ -1,0 +1,29 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.20 of Day Month 20?? (rev: 4c54d98)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 73 and seed -6811368183224027883 with 8 workers on 8 cores with 1785MB heap and 64MB offheap memory [pid: 29708] (Windows 11 10.0 amd64, Oracle Corporation 17.0.2 x86_64, MSBDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file C:\Users\fatmi\OneDrive\Documentos\UNI\QUINTO\ISI\Ejercicios\Ejercicio_4\ejercicio_4.tla (file:/c:/Users/fatmi/OneDrive/Documentos/UNI/QUINTO/ISI/Ejercicios/Ejercicio_4/ejercicio_4.tla)
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-800552828616438990\Integers.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.9.251810-universal/tools/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-800552828616438990\Naturals.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.9.251810-universal/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module ejercicio_4
+Linting of module ejercicio_4
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2025-10-02 10:09:33)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2229:1 @!@!@
+The invariant TypeOK specified in the configuration file
+is not defined in the specification.
+@!@!@ENDMSG 2229 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 354ms at (2025-10-02 10:09:33)
+@!@!@ENDMSG 2186 @!@!@
