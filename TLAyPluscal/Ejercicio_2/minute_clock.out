@@ -2,13 +2,13 @@
 TLC2 Version 2.20 of Day Month 20?? (rev: 4c54d98)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 33 and seed -5112539894382546429 with 8 workers on 8 cores with 1785MB heap and 64MB offheap memory [pid: 32092] (Windows 11 10.0 amd64, Oracle Corporation 17.0.2 x86_64, MSBDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 114 and seed -421065322061100744 with 8 workers on 8 cores with 1785MB heap and 64MB offheap memory [pid: 10416] (Windows 11 10.0 amd64, Oracle Corporation 17.0.2 x86_64, MSBDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
 @!@!@ENDMSG 2220 @!@!@
-Parsing file C:\Users\fatmi\OneDrive\Documentos\UNI\QUINTO\ISI\Ejercicios\Ejercicio_2\minute_clock.tla (file:/c:/Users/fatmi/OneDrive/Documentos/UNI/QUINTO/ISI/Ejercicios/Ejercicio_2/minute_clock.tla)
-Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-10125298808997506938\Naturals.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.9.251810-universal/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file C:\Users\fatmi\OneDrive\Documentos\UNI\QUINTO\ISI\ISI\TLAyPluscal\Ejercicio_2\minute_clock.tla (file:/c:/Users/fatmi/OneDrive/Documentos/UNI/QUINTO/ISI/ISI/TLAyPluscal/Ejercicio_2/minute_clock.tla)
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-2982402384292722161\Naturals.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.10.32239-universal/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
 Semantic processing of module Naturals
 Semantic processing of module minute_clock
 Linting of module minute_clock
@@ -16,10 +16,10 @@ Linting of module minute_clock
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2025-10-01 05:12:47)
+Starting... (2025-10-05 10:28:56)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2212:0 @!@!@
-Implied-temporal checking--satisfiability problem has 1 branches.
+Implied-temporal checking--satisfiability problem has 75 branches.
 @!@!@ENDMSG 2212 @!@!@
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
@@ -55,25 +55,25 @@ Computed 512 initial states...
 Computed 1024 initial states...
 @!@!@ENDMSG 2269 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1440 distinct states generated at 2025-10-01 05:12:49.
+Finished computing initial states: 1440 distinct states generated at 2025-10-05 10:29:00.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the current state space with 1440 total distinct states at (2025-10-01 05:12:52)
+Checking 75 branches of temporal properties for the current state space with 106137 total distinct states at (2025-10-05 10:29:03)
 @!@!@ENDMSG 2192 @!@!@
 @!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 01s at 2025-10-01 05:12:54
+Finished checking temporal properties in 01s at 2025-10-05 10:29:04
 @!@!@ENDMSG 2267 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(1) at 2025-10-01 05:12:54: 2.561 states generated (2.561 s/min), 1.440 distinct states found (1.440 ds/min), 319 states left on queue.
+Progress(1) at 2025-10-05 10:29:04: 2.265 states generated (2.265 s/min), 1.440 distinct states found (1.440 ds/min), 613 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(1) at 2025-10-01 05:12:55: 2.880 states generated, 1.440 distinct states found, 0 states left on queue.
+Progress(1) at 2025-10-05 10:29:06: 2.880 states generated, 1.440 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the complete state space with 1440 total distinct states at (2025-10-01 05:12:55)
+Checking 75 branches of temporal properties for the complete state space with 108000 total distinct states at (2025-10-05 10:29:06)
 @!@!@ENDMSG 2192 @!@!@
 @!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 02s at 2025-10-01 05:12:57
+Finished checking temporal properties in 02s at 2025-10-05 10:29:08
 @!@!@ENDMSG 2267 @!@!@
 @!@!@STARTMSG 2193:0 @!@!@
 Model checking completed. No error has been found.
@@ -82,7 +82,7 @@ Model checking completed. No error has been found.
   calculated (optimistic):  val = 1.1E-13
 @!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(1) at 2025-10-01 05:12:57: 2.880 states generated (15.071 s/min), 1.440 distinct states found (7.535 ds/min), 0 states left on queue.
+Progress(1) at 2025-10-05 10:29:08: 2.880 states generated (14.358 s/min), 1.440 distinct states found (7.179 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
 2880 states generated, 1440 distinct states found, 0 states left on queue.
@@ -94,5 +94,5 @@ The depth of the complete state graph search is 1.
 The average outdegree of the complete state graph is 0 (minimum is 0, the maximum 0 and the 95th percentile is 0).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 11473ms at (2025-10-01 05:12:57)
+Finished in 12068ms at (2025-10-05 10:29:08)
 @!@!@ENDMSG 2186 @!@!@

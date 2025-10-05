@@ -1,7 +1,7 @@
 ---- MODULE ejercicio_4 ----
 EXTENDS Integers
 
-RANGE_TEMPS == (-20..60)
+RANGE_TEMPS == (-1..1)
 MAX_INCREMENT == 5
 HOURS == (1..12)
 
@@ -53,11 +53,9 @@ fair process (Clock = "Clock")
         };
     } \* while
 }
+
 }
 *)
-
-==== 
-
 \* BEGIN TRANSLATION (chksum(pcal) = "c1c22053" /\ chksum(tla) = "d04c838c")
 \* Label Thermometer of process Thermometer at line 13 col 5 changed to Thermometer_
 \* Label Clock of process Clock at line 45 col 5 changed to Clock_
@@ -125,13 +123,24 @@ Spec == /\ Init /\ [][Next]_vars
 
 \* END TRANSLATION 
 
-TypeOK == /\ sensor \in RANGE_TEMPS
+
+----
+TypeOK == /\ sensor \in RANGE_TEMPS 
           /\ display \in RANGE_TEMPS
           /\ hour \in HOURS
-          /\ pc \in [ProcSet -> {"Thermometer_", "ReadSensor", "UpdateDisplay", "Clock_", "Tick"}]
 
+AllHours == \A h \in HOURS: <>(hour = h) 
 
-AllTemperatures == \A t \in RANGE_TEMPS: <>(sensor = t) 
+AlwaysCycle == []
+    \/ <> (hour = 12) ~> (hour = 1)
+
+AlwaysUp == 
+    [] [
+        IF hour = 12 THEN 
+            hour' = 1
+        ELSE
+            hour' = hour + 1
+    ]_hour
 
 DisplayAlwaysReachesSensor == display /= sensor => <> (display = sensor)
 
@@ -146,4 +155,11 @@ DisplayIncrementsOK ==
                  (1..MAX_INCREMENT): (i > display' - display  /\ display + i <= sensor)
         ELSE  display' = display
     ]_display
+
+ReadSensorOK ==
+    [] [ IF display = sensor
+         THEN sensor' \in RANGE_TEMPS
+         ELSE sensor' = sensor
+       ]_<<sensor, display>>
 ====
+

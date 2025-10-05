@@ -38,7 +38,7 @@ ReadSensor ==
     /\ IF display = sensor
           THEN sensor' \in RANGE_TEMPS
           ELSE sensor' = sensor
-    /\ UNCHANGED display
+    /\ UNCHANGED <<display, hr, min, ind>>
 
 (* Actualizar el display gradualmente *)
 UpdateDisplay ==
@@ -52,7 +52,7 @@ UpdateDisplay ==
              ELSE display' = sensor
     \/ /\ display = sensor
        /\ display' = display
-    /\ UNCHANGED sensor
+    /\ UNCHANGED <<sensor, hr, min, ind>>
 
 (* Reloj de 12 horas con AM/PM *)
 Clock ==
@@ -70,11 +70,13 @@ Clock ==
           ELSE
              /\ hr' = hr + 1
              /\ UNCHANGED ind
+    /\ UNCHANGED <<sensor, display>>
 
 (* ---------------- NEXT + SPEC ---------------- *)
 Next == 
-    /\ (ReadSensor \/ UpdateDisplay)
-    /\ Clock
+    \/ ReadSensor
+    \/ UpdateDisplay
+    \/ Clock
 
 Spec ==
     /\ Init
@@ -93,29 +95,56 @@ TypeOK ==
     /\ min \in MIN_RANGE
     /\ ind \in IND_RANGE
 
-(* LIVENESS: siempre hay ciclos *)
-AlwaysCycle ==
-    [] ( \/ (hr = 12) ~> (hr = 1)
-         \/ (min = 59) ~> (min = 0)
-         \/ (ind = "AM") ~> (ind = "PM")
-         \/ (ind = "PM") ~> (ind = "AM")
-       )
+(* Propiedades de tipo LIVENESS, comprueba que los cambios
+sean cíclicos *)
 
-(* ACCIÓN: nunca retrocede *)
+AlwaysCycle == []
+    \/ <> (hr = 12) ~> (hr = 1)
+    \/ <> (min = 59) ~> (min = 0)
+    \/ <> (ind = "AM") ~> (ind = "PM")
+    \/ <> (ind = "PM") ~> (ind = "AM")
+
+(* Propiedades de tipo ACCIÓN, comprueban que nunca vaya el
+el reloj para atrás y que el cambio del indicador se efectua
+correctamente *)
+
 AlwaysUp ==
-    [] [ \/ /\ min < 59
-            /\ min' = min + 1
-            /\ hr' = hr
-         \/ /\ min = 59
-            /\ min' = 0
-            /\ hr' = IF hr = 12 THEN 1 ELSE hr + 1
-       ]_<<hr, min>>
+    [] [
+        \/ /\ min < 59
+           /\ min' = min + 1 
+           /\ hr' = hr
+        \/ /\ min = 59 
+           /\ min' = 0
+           /\ \/ /\ hr = 12
+                 /\ hr' = 1
+                 /\ ind' = ind
+              \/ /\ hr = 11
+                 /\ hr' = 12
+                 /\ \/ /\ ind = "AM"
+                       /\ ind' = "PM"
+                    \/ /\ ind = "PM"
+                       /\ ind' = "AM"
+              \/ /\ hr < 11
+                 /\ hr' = hr + 1
+                 /\ ind' = ind
+       ]_<<hr,min,ind>>
 
-(* El indicador cambia en el momento correcto *)
-IndicatorOK ==
-    [] [ /\ (min = 59 /\ hr = 11 /\ ind = "AM") => (ind' = "PM")
-         /\ (min = 59 /\ hr = 11 /\ ind = "PM") => (ind' = "AM")
-       ]_<<hr, ind, min>>
+
+IndicatorOK == 
+    []
+        [
+            /\ (min = 59 /\ hr = 11 /\ ind = "AM") => (ind' = "PM")
+            /\ (min = 59 /\ hr = 11 /\ ind = "PM") => (ind' = "AM")
+        ]_<<hr,ind,min>>
+
+(* Comprueban que en algún momento se tome cada valor del rango
+tipo LIVENESS *)
+
+AllHours == \A h \in HR_RANGE: <>(hr = h) 
+
+AllMinutes == \A m \in MIN_RANGE: <>(min = m) 
+
+AllInd == \A i \in IND_RANGE: <>(ind = i)
 
 (* El display siempre alcanza al sensor *)
 DisplayAlwaysReachesSensor ==

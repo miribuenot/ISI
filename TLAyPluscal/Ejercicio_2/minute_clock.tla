@@ -76,18 +76,41 @@ el reloj para atrás y que el cambio del indicador se efectua
 correctamente *)
 
 AlwaysUp ==
-    [] [ \/ /\ min < 59 /\ min' = min + 1 /\ hr' = hr
-          \/ /\ min = 59 /\ min' = 0
-             /\ hr' = IF hr = 12 THEN 1 ELSE hr + 1
-       ]_<<hr,min>>
+    [] [
+        \/ /\ min < 59
+           /\ min' = min + 1 
+           /\ hr' = hr
+        \/ /\ min = 59 
+           /\ min' = 0
+           /\ \/ /\ hr = 12
+                 /\ hr' = 1
+                 /\ ind' = ind
+              \/ /\ hr = 11
+                 /\ hr' = 12
+                 /\ \/ /\ ind = "AM"
+                       /\ ind' = "PM"
+                    \/ /\ ind = "PM"
+                       /\ ind' = "AM"
+              \/ /\ hr < 11
+                 /\ hr' = hr + 1
+                 /\ ind' = ind
+       ]_<<hr,min,ind>>
 
 
 IndicatorOK == 
     []
-        [/\ (min = 59 /\ hr = 11 /\ ind = "AM") => (ind' = "PM")
-        /\ (min = 59 /\ hr = 11 /\ ind = "PM") => (ind' = "AM")
+        [
+            /\ (min = 59 /\ hr = 11 /\ ind = "AM") => (ind' = "PM")
+            /\ (min = 59 /\ hr = 11 /\ ind = "PM") => (ind' = "AM")
         ]_<<hr,ind,min>>
 
+(* Comprueban que en algún momento se tome cada valor del rango
+tipo LIVENESS *)
 
+AllHours == \A h \in HR_RANGE: <>(hr = h) 
+
+AllMinutes == \A m \in MIN_RANGE: <>(min = m) 
+
+AllInd == \A i \in IND_RANGE: <>(ind = i)
 
 =========================================================

@@ -1,8 +1,8 @@
 ---- MODULE ejercicio_4 ----
+EXTENDS Integers
 
 RANGE_TEMPS == (-20..60)
 MAX_INCREMENT == 5
-HOURS == (1..12)
 
 (* --algorithm system {
 
@@ -52,77 +52,11 @@ fair process (Clock = "Clock")
         };
     } \* while
 }
+
 }
 *)
 
-==== 
 
-\* BEGIN TRANSLATION (chksum(pcal) = "e73aa883" /\ chksum(tla) = "e9afa1da")
-\* Label Thermometer of process Thermometer at line 13 col 5 changed to Thermometer_
-\* Label Clock of process Clock at line 45 col 5 changed to Clock_
-VARIABLES pc, display, sensor, hour
-
-vars == << pc, display, sensor, hour >>
-
-ProcSet == {"Thermometer"} \cup {"Clock"}
-
-Init == (* Process Thermometer *)
-        /\ display \in RANGE_TEMPS
-        /\ sensor \in RANGE_TEMPS
-        (* Process Clock *)
-        /\ hour \in HOURS
-        /\ pc = [self \in ProcSet |-> CASE self = "Thermometer" -> "Thermometer_"
-                                        [] self = "Clock" -> "Clock_"]
-
-Thermometer_ == /\ pc["Thermometer"] = "Thermometer_"
-                /\ \/ /\ display = sensor
-                      /\ pc' = [pc EXCEPT !["Thermometer"] = "ReadSensor"]
-                   \/ /\ display /= sensor
-                      /\ pc' = [pc EXCEPT !["Thermometer"] = "UpdateDisplay"]
-                /\ UNCHANGED << display, sensor, hour >>
-
-ReadSensor == /\ pc["Thermometer"] = "ReadSensor"
-              /\ \E newTemperature \in RANGE_TEMPS:
-                   sensor' = newTemperature
-              /\ pc' = [pc EXCEPT !["Thermometer"] = "Thermometer_"]
-              /\ UNCHANGED << display, hour >>
-
-UpdateDisplay == /\ pc["Thermometer"] = "UpdateDisplay"
-                 /\ IF display > sensor
-                       THEN /\ IF display - sensor >= MAX_INCREMENT
-                                  THEN /\ display' = display - MAX_INCREMENT
-                                  ELSE /\ display' = display - ((display - sensor) % MAX_INCREMENT)
-                       ELSE /\ IF display < sensor
-                                  THEN /\ IF sensor - display >= MAX_INCREMENT
-                                             THEN /\ display' = display + MAX_INCREMENT
-                                             ELSE /\ display' = display + ((sensor - display) % MAX_INCREMENT)
-                                  ELSE /\ TRUE
-                                       /\ UNCHANGED display
-                 /\ pc' = [pc EXCEPT !["Thermometer"] = "Thermometer_"]
-                 /\ UNCHANGED << sensor, hour >>
-
-Thermometer == Thermometer_ \/ ReadSensor \/ UpdateDisplay
-
-Clock_ == /\ pc["Clock"] = "Clock_"
-          /\ pc' = [pc EXCEPT !["Clock"] = "Tick"]
-          /\ UNCHANGED << display, sensor, hour >>
-
-Tick == /\ pc["Clock"] = "Tick"
-        /\ IF hour < 23
-              THEN /\ hour' = hour + 1
-              ELSE /\ hour' = 0
-        /\ pc' = [pc EXCEPT !["Clock"] = "Clock_"]
-        /\ UNCHANGED << display, sensor >>
-
-Clock == Clock_ \/ Tick
-
-Next == Thermometer \/ Clock
-
-Spec == /\ Init /\ [][Next]_vars
-        /\ WF_vars(Thermometer)
-        /\ WF_vars(Clock)
-
-\* END TRANSLATION 
 ----
 TypeOK == /\ sensor \in RANGE_TEMPS 
           /\ display \in RANGE_TEMPS
@@ -143,3 +77,4 @@ DisplayIncrementsOK ==
         ELSE  display' = display
     ]_display
 ====
+
