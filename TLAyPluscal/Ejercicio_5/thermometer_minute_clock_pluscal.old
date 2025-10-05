@@ -1,0 +1,233 @@
+---- MODULE thermometer_minute_clock_pluscal ----
+EXTENDS Integers
+
+RANGE_TEMPS == (-1..1)
+MAX_INCREMENT == 5
+RANGE_HOURS == (1..12)
+RANGE_MINS == (0..59)
+RANGE_IND == {"AM", "PM"}
+
+(* --algorithm system {
+
+fair process (Thermometer = "Thermometer")
+    variables display \in RANGE_TEMPS, 
+              sensor  \in RANGE_TEMPS;
+{Thermometer:   
+    while (TRUE) {
+        either {
+            when display = sensor;
+
+            ReadSensor:
+            with (newTemperature \in RANGE_TEMPS) {
+                sensor := newTemperature;
+            }
+        }    
+        or{
+            when display /= sensor;
+
+            UpdateDisplay:
+            if (display > sensor) {
+                if (display - sensor >= MAX_INCREMENT) 
+                    display := display - MAX_INCREMENT
+                else 
+                    display := display - ((display - sensor) % MAX_INCREMENT)
+            }    
+            else if (display < sensor) {
+                if (sensor - display >= MAX_INCREMENT) 
+                    display := display + MAX_INCREMENT
+                else
+                    display := display + ((sensor - display) % MAX_INCREMENT) 
+            }                    
+        }
+    } \* while
+}
+
+
+fair process (Clock = "Clock")
+    variables hr \in RANGE_HOURS,
+              min \in RANGE_MINS,
+              ind \in RANGE_IND;
+{Clock:  
+    while (TRUE) {
+        if (min < 59) {
+            min := min + 1;
+        }
+        else {
+            min:= 0;
+            if (hr = 11) {
+                hr := 12;
+                if (ind = "AM") {
+                    ind := "PM";
+                }
+                else {
+                    ind := "AM";
+                }
+            }
+            else if (hr = 12) {
+                hr := 1;
+            }
+            else {
+                hr := hr + 1;
+            }
+        }
+    }\*while
+}
+}
+*)
+\* BEGIN TRANSLATION (chksum(pcal) = "1b80fbfb" /\ chksum(tla) = "ed541050")
+\* Label Thermometer of process Thermometer at line 16 col 5 changed to Thermometer_
+\* Label Clock of process Clock at line 51 col 5 changed to Clock_
+VARIABLES pc, display, sensor, hr, min, ind
+
+vars == << pc, display, sensor, hr, min, ind >>
+
+ProcSet == {"Thermometer"} \cup {"Clock"}
+
+Init == (* Process Thermometer *)
+        /\ display \in RANGE_TEMPS
+        /\ sensor \in RANGE_TEMPS
+        (* Process Clock *)
+        /\ hr \in RANGE_HOURS
+        /\ min \in RANGE_MINS
+        /\ ind \in RANGE_IND
+        /\ pc = [self \in ProcSet |-> CASE self = "Thermometer" -> "Thermometer_"
+                                        [] self = "Clock" -> "Clock_"]
+
+Thermometer_ == /\ pc["Thermometer"] = "Thermometer_"
+                /\ \/ /\ display = sensor
+                      /\ pc' = [pc EXCEPT !["Thermometer"] = "ReadSensor"]
+                   \/ /\ display /= sensor
+                      /\ pc' = [pc EXCEPT !["Thermometer"] = "UpdateDisplay"]
+                /\ UNCHANGED << display, sensor, hr, min, ind >>
+
+ReadSensor == /\ pc["Thermometer"] = "ReadSensor"
+              /\ \E newTemperature \in RANGE_TEMPS:
+                   sensor' = newTemperature
+              /\ pc' = [pc EXCEPT !["Thermometer"] = "Thermometer_"]
+              /\ UNCHANGED << display, hr, min, ind >>
+
+UpdateDisplay == /\ pc["Thermometer"] = "UpdateDisplay"
+                 /\ IF display > sensor
+                       THEN /\ IF display - sensor >= MAX_INCREMENT
+                                  THEN /\ display' = display - MAX_INCREMENT
+                                  ELSE /\ display' = display - ((display - sensor) % MAX_INCREMENT)
+                       ELSE /\ IF display < sensor
+                                  THEN /\ IF sensor - display >= MAX_INCREMENT
+                                             THEN /\ display' = display + MAX_INCREMENT
+                                             ELSE /\ display' = display + ((sensor - display) % MAX_INCREMENT)
+                                  ELSE /\ TRUE
+                                       /\ UNCHANGED display
+                 /\ pc' = [pc EXCEPT !["Thermometer"] = "Thermometer_"]
+                 /\ UNCHANGED << sensor, hr, min, ind >>
+
+Thermometer == Thermometer_ \/ ReadSensor \/ UpdateDisplay
+
+Clock_ == /\ pc["Clock"] = "Clock_"
+          /\ IF min < 59
+                THEN /\ min' = min + 1
+                     /\ UNCHANGED << hr, ind >>
+                ELSE /\ IF hr = 11
+                           THEN /\ hr' = 12
+                                /\ IF ind = "AM"
+                                      THEN /\ ind' = "PM"
+                                      ELSE /\ ind' = "AM"
+                           ELSE /\ IF hr = 12
+                                      THEN /\ hr' = 1
+                                      ELSE /\ hr' = hr + 1
+                                /\ ind' = ind
+                     /\ min' = min
+          /\ pc' = [pc EXCEPT !["Clock"] = "Clock_"]
+          /\ UNCHANGED << display, sensor >>
+
+Clock == Clock_
+
+Next == Thermometer \/ Clock
+
+Spec == /\ Init /\ [][Next]_vars
+        /\ WF_vars(Thermometer)
+        /\ WF_vars(Clock)
+
+\* END TRANSLATION 
+
+----
+(* SAFETY: rangos siempre respetados *)
+TypeOK ==
+    /\ sensor \in RANGE_TEMPS
+    /\ display \in RANGE_TEMPS
+    /\ hr \in RANGE_HOURS
+    /\ min \in RANGE_MINS
+    /\ ind \in RANGE_IND
+
+(* Propiedades de tipo LIVENESS, comprueba que los cambios
+sean cíclicos *)
+
+AlwaysCycle == []
+    \/ <> (hr = 12) ~> (hr = 1)
+    \/ <> (min = 59) ~> (min = 0)
+    \/ <> (ind = "AM") ~> (ind = "PM")
+    \/ <> (ind = "PM") ~> (ind = "AM")
+
+(* Propiedades de tipo ACCIÓN, comprueban que nunca vaya el
+el reloj para atrás y que el cambio del indicador se efectua
+correctamente *)
+
+AlwaysUp ==
+    [] [
+        \/ /\ min < 59
+           /\ min' = min + 1 
+           /\ hr' = hr
+        \/ /\ min = 59 
+           /\ min' = 0
+           /\ \/ /\ hr = 12
+                 /\ hr' = 1
+                 /\ ind' = ind
+              \/ /\ hr = 11
+                 /\ hr' = 12
+                 /\ \/ /\ ind = "AM"
+                       /\ ind' = "PM"
+                    \/ /\ ind = "PM"
+                       /\ ind' = "AM"
+              \/ /\ hr < 11
+                 /\ hr' = hr + 1
+                 /\ ind' = ind
+       ]_<<hr,min,ind>>
+
+
+IndicatorOK == 
+    []
+        [
+            /\ (min = 59 /\ hr = 11 /\ ind = "AM") => (ind' = "PM")
+            /\ (min = 59 /\ hr = 11 /\ ind = "PM") => (ind' = "AM")
+        ]_<<hr,ind,min>>
+
+(* Comprueban que en algún momento se tome cada valor del rango
+tipo LIVENESS *)
+
+AllHours == \A h \in RANGE_HOURS: <>(hr = h) 
+
+AllMinutes == \A m \in RANGE_MINS: <>(min = m) 
+
+AllInd == \A i \in RANGE_IND: <>(ind = i)
+
+(* El display siempre alcanza al sensor *)
+DisplayAlwaysReachesSensor ==
+    [](display /= sensor => <> (display = sensor))
+
+(* Incrementos siempre correctos *)
+DisplayIncrementsOK ==
+    [] [ IF display' < display THEN
+            /\ display' >= sensor
+            /\ display - display' <= MAX_INCREMENT
+         ELSE IF display' > display THEN
+            /\ display' <= sensor
+            /\ display' - display <= MAX_INCREMENT
+         ELSE display' = display
+       ]_display
+
+(* El sensor se mantiene salvo cuando display = sensor *)
+ReadSensorOK ==
+    [] [ IF display = sensor
+         THEN sensor' \in RANGE_TEMPS
+         ELSE sensor' = sensor
+       ]_<<sensor, display>>
+====
