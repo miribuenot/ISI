@@ -1,3 +1,0 @@
-{
-    "tlaplus.tlc.modelChecker.options": "-workers auto -fpmem .9 -deadlock -dump dot,colorize,actionlabels output.dot"
-}
