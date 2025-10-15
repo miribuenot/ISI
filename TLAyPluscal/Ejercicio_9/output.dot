@@ -1,0 +1,132 @@
+strict digraph DiskGraph {
+node [shape=box,style=rounded]
+edge [colorscheme="paired12"]
+nodesep=0.35;
+subgraph cluster_graph {
+color="white";
+5698449550179074219 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",style = filled]
+5698449550179074219 -> 6664056464206798343 [label="AccessToBridge",color="2",fontcolor="2"];
+6664056464206798343 [label="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+5698449550179074219 -> -6638562863920212497 [label="AccessToBridge",color="2",fontcolor="2"];
+-6638562863920212497 [label="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+6664056464206798343 -> 7291782768192242620 [label="AccessToBridge",color="2",fontcolor="2"];
+7291782768192242620 [label="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]"];
+-6638562863920212497 -> 8060647848100035217 [label="AccessToBridge",color="2",fontcolor="2"];
+8060647848100035217 [label="/\\ sensors = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+7291782768192242620 -> 6638704117146016750 [label="AccessToBridge",color="2",fontcolor="2"];
+6638704117146016750 [label="/\\ sensors = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]"];
+8060647848100035217 -> 6638704117146016750 [label="AccessToBridge",color="2",fontcolor="2"];
+6664056464206798343 -> 8060647848100035217 [label="AccessToBridge",color="2",fontcolor="2"];
+-6638562863920212497 -> 1698853071969345898 [label="AccessToBridge",color="2",fontcolor="2"];
+1698853071969345898 [label="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]"];
+8060647848100035217 -> -386252389023246587 [label="AccessToBridge",color="2",fontcolor="2"];
+-386252389023246587 [label="/\\ sensors = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]",tooltip="/\\ sensors = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"1\"}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]"];
+1698853071969345898 -> -386252389023246587 [label="AccessToBridge",color="2",fontcolor="2"];
+-386252389023246587 -> -6058927743826574983 [label="EnterBridge",color="3",fontcolor="3"];
+-6058927743826574983 [label="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"left\">>}\n/\\ cars = [left |-> {\"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"left\">>}\n/\\ cars = [left |-> {\"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+1698853071969345898 -> 2895945376039870138 [label="EnterBridge",color="3",fontcolor="3"];
+2895945376039870138 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"left\">>}\n/\\ cars = [left |-> {\"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"left\">>}\n/\\ cars = [left |-> {\"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+7291782768192242620 -> -3703176666935800911 [label="EnterBridge",color="3",fontcolor="3"];
+-3703176666935800911 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"right\">>}\n/\\ cars = [left |-> {}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"right\">>}\n/\\ cars = [left |-> {}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+6638704117146016750 -> 1257030316341090093 [label="EnterBridge",color="3",fontcolor="3"];
+1257030316341090093 [label="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {<<\"1\", \"right\">>}\n/\\ cars = [left |-> {}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {<<\"1\", \"right\">>}\n/\\ cars = [left |-> {}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-3703176666935800911 -> 1257030316341090093 [label="AccessToBridge",color="2",fontcolor="2"];
+2895945376039870138 -> -6058927743826574983 [label="AccessToBridge",color="2",fontcolor="2"];
+-6058927743826574983 -> 4165571799350960110 [label="ExitBridge",color="4",fontcolor="4"];
+4165571799350960110 [label="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\", \"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\", \"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+2895945376039870138 -> 3071627415821959490 [label="ExitBridge",color="4",fontcolor="4"];
+3071627415821959490 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\", \"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\", \"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+1257030316341090093 -> -8561676059493764670 [label="ExitBridge",color="4",fontcolor="4"];
+-8561676059493764670 [label="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {}, right |-> {\"8\", \"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {}, right |-> {\"8\", \"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-3703176666935800911 -> 7342331322082223238 [label="ExitBridge",color="4",fontcolor="4"];
+7342331322082223238 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {}, right |-> {\"8\", \"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {}, right |-> {\"8\", \"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-8561676059493764670 -> 3395471368076391565 [label="AccessToBridge",color="2",fontcolor="2"];
+3395471368076391565 [label="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {}, right |-> {\"8\", \"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {}, right |-> {\"8\", \"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]"];
+3071627415821959490 -> -6918134967711824622 [label="AccessToBridge",color="2",fontcolor="2"];
+-6918134967711824622 [label="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\", \"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\", \"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+4165571799350960110 -> 7557741098211834103 [label="AccessToBridge",color="2",fontcolor="2"];
+7557741098211834103 [label="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\", \"1\"}, right |-> {}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\", \"1\"}, right |-> {}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]"];
+-6918134967711824622 -> -5567193569739122378 [label="AccessToBridge",color="2",fontcolor="2"];
+-5567193569739122378 [label="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\", \"1\"}, right |-> {}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\", \"1\"}, right |-> {}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]"];
+3395471368076391565 -> -280449476174483045 [label="EnterBridge",color="3",fontcolor="3"];
+-280449476174483045 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"left\">>}\n/\\ cars = [left |-> {}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"left\">>}\n/\\ cars = [left |-> {}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+3071627415821959490 -> 4165571799350960110 [label="AccessToBridge",color="2",fontcolor="2"];
+7342331322082223238 -> -8561676059493764670 [label="AccessToBridge",color="2",fontcolor="2"];
+-280449476174483045 -> 970559564781807096 [label="AccessToBridge",color="2",fontcolor="2"];
+970559564781807096 [label="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {<<\"8\", \"left\">>}\n/\\ cars = [left |-> {}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {<<\"8\", \"left\">>}\n/\\ cars = [left |-> {}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-5567193569739122378 -> 7558124062653405312 [label="EnterBridge",color="3",fontcolor="3"];
+7558124062653405312 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"right\">>}\n/\\ cars = [left |-> {\"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"right\">>}\n/\\ cars = [left |-> {\"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+7557741098211834103 -> 5250673922836036133 [label="EnterBridge",color="3",fontcolor="3"];
+5250673922836036133 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"right\">>}\n/\\ cars = [left |-> {\"8\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"right\">>}\n/\\ cars = [left |-> {\"8\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+7558124062653405312 -> 6498864997754450430 [label="AccessToBridge",color="2",fontcolor="2"];
+6498864997754450430 [label="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"right\">>}\n/\\ cars = [left |-> {\"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"1\"}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"right\">>}\n/\\ cars = [left |-> {\"1\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+970559564781807096 -> -143302661801037320 [label="ExitBridge",color="4",fontcolor="4"];
+-143302661801037320 [label="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-280449476174483045 -> -459163591826599534 [label="ExitBridge",color="4",fontcolor="4"];
+-459163591826599534 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+7342331322082223238 -> 7081744078537639148 [label="AccessToBridge",color="2",fontcolor="2"];
+7081744078537639148 [label="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {}, right |-> {\"8\", \"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {}, right |-> {\"8\", \"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-459163591826599534 -> 5547868627729733058 [label="AccessToBridge",color="2",fontcolor="2"];
+5547868627729733058 [label="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-143302661801037320 -> -1157106224396623833 [label="AccessToBridge",color="2",fontcolor="2"];
+-1157106224396623833 [label="/\\ sensors = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+6498864997754450430 -> 6664056464206798343 [label="ExitBridge",color="4",fontcolor="4"];
+7558124062653405312 -> 5698449550179074219 [label="ExitBridge",color="4",fontcolor="4"];
+5250673922836036133 -> 9036017833086451747 [label="AccessToBridge",color="2",fontcolor="2"];
+9036017833086451747 [label="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"right\">>}\n/\\ cars = [left |-> {\"8\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"right\">>}\n/\\ cars = [left |-> {\"8\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-1157106224396623833 -> 8120504837294184291 [label="AccessToBridge",color="2",fontcolor="2"];
+8120504837294184291 [label="/\\ sensors = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]"];
+-143302661801037320 -> 5045237694972710364 [label="AccessToBridge",color="2",fontcolor="2"];
+5045237694972710364 [label="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]"];
+5547868627729733058 -> -2678684483565969973 [label="AccessToBridge",color="2",fontcolor="2"];
+-2678684483565969973 [label="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"green\", right |-> \"red\"]"];
+-459163591826599534 -> -143302661801037320 [label="AccessToBridge",color="2",fontcolor="2"];
+7081744078537639148 -> 1960542432855467917 [label="AccessToBridge",color="2",fontcolor="2"];
+1960542432855467917 [label="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {}, right |-> {\"8\", \"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {}, right |-> {\"8\", \"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]"];
+-2678684483565969973 -> 8120504837294184291 [label="AccessToBridge",color="2",fontcolor="2"];
+5547868627729733058 -> -1157106224396623833 [label="AccessToBridge",color="2",fontcolor="2"];
+5045237694972710364 -> -3011923644512986232 [label="AccessToBridge",color="2",fontcolor="2"];
+8120504837294184291 -> -3757743438486844059 [label="EnterBridge",color="3",fontcolor="3"];
+-3757743438486844059 [label="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {<<\"8\", \"right\">>}\n/\\ cars = [left |-> {}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"1\"}]\n/\\ bridgeCam = {<<\"8\", \"right\">>}\n/\\ cars = [left |-> {}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-1157106224396623833 -> -3011923644512986232 [label="AccessToBridge",color="2",fontcolor="2"];
+-3011923644512986232 [label="/\\ sensors = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]",tooltip="/\\ sensors = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ bridgeCam = {}\n/\\ cars = [left |-> {\"8\"}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"green\"]"];
+9036017833086451747 -> 5547868627729733058 [label="ExitBridge",color="4",fontcolor="4"];
+5250673922836036133 -> -459163591826599534 [label="ExitBridge",color="4",fontcolor="4"];
+-3757743438486844059 -> 7081744078537639148 [label="ExitBridge",color="4",fontcolor="4"];
+5045237694972710364 -> 7030438575222818454 [label="EnterBridge",color="3",fontcolor="3"];
+7030438575222818454 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"left\">>}\n/\\ cars = [left |-> {\"8\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"left\">>}\n/\\ cars = [left |-> {\"8\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+1960542432855467917 -> -1885694539476846846 [label="EnterBridge",color="3",fontcolor="3"];
+-1885694539476846846 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"left\">>}\n/\\ cars = [left |-> {}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"left\">>}\n/\\ cars = [left |-> {}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-2678684483565969973 -> -4843608633483741279 [label="EnterBridge",color="3",fontcolor="3"];
+-4843608633483741279 [label="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"right\">>}\n/\\ cars = [left |-> {}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {}]\n/\\ bridgeCam = {<<\"8\", \"right\">>}\n/\\ cars = [left |-> {}, right |-> {\"1\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-1885694539476846846 -> -7039453091247543801 [label="AccessToBridge",color="2",fontcolor="2"];
+-7039453091247543801 [label="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {<<\"1\", \"left\">>}\n/\\ cars = [left |-> {}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {}, right |-> {\"8\"}]\n/\\ bridgeCam = {<<\"1\", \"left\">>}\n/\\ cars = [left |-> {}, right |-> {\"8\"}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+7030438575222818454 -> 1967010091456279737 [label="AccessToBridge",color="2",fontcolor="2"];
+-3011923644512986232 -> 1967010091456279737 [label="EnterBridge",color="3",fontcolor="3"];
+1967010091456279737 [label="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"left\">>}\n/\\ cars = [left |-> {\"8\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]",tooltip="/\\ sensors = [left |-> {\"8\"}, right |-> {}]\n/\\ bridgeCam = {<<\"1\", \"left\">>}\n/\\ cars = [left |-> {\"8\"}, right |-> {}]\n/\\ lights = [left |-> \"red\", right |-> \"red\"]"];
+-7039453091247543801 -> -6638562863920212497 [label="ExitBridge",color="4",fontcolor="4"];
+7030438575222818454 -> 3071627415821959490 [label="ExitBridge",color="4",fontcolor="4"];
+-1885694539476846846 -> 5698449550179074219 [label="ExitBridge",color="4",fontcolor="4"];
+-4843608633483741279 -> -3757743438486844059 [label="AccessToBridge",color="2",fontcolor="2"];
+1967010091456279737 -> -6918134967711824622 [label="ExitBridge",color="4",fontcolor="4"];
+-4843608633483741279 -> 7342331322082223238 [label="ExitBridge",color="4",fontcolor="4"];
+{rank = same; 5698449550179074219;}
+{rank = same; -6638562863920212497;6664056464206798343;}
+{rank = same; 1698853071969345898;8060647848100035217;7291782768192242620;}
+{rank = same; -386252389023246587;2895945376039870138;-3703176666935800911;6638704117146016750;}
+{rank = same; 7342331322082223238;3071627415821959490;-6058927743826574983;1257030316341090093;}
+{rank = same; -8561676059493764670;4165571799350960110;7081744078537639148;-6918134967711824622;}
+{rank = same; 7557741098211834103;1960542432855467917;-5567193569739122378;3395471368076391565;}
+{rank = same; 7558124062653405312;-280449476174483045;5250673922836036133;-1885694539476846846;}
+{rank = same; 970559564781807096;-459163591826599534;-7039453091247543801;6498864997754450430;9036017833086451747;}
+{rank = same; -143302661801037320;5547868627729733058;}
+{rank = same; -1157106224396623833;5045237694972710364;-2678684483565969973;}
+{rank = same; 8120504837294184291;-3011923644512986232;7030438575222818454;-4843608633483741279;}
+{rank = same; -3757743438486844059;1967010091456279737;}
+}
+subgraph cluster_legend {graph[style=bold];label = "Next State Actions" style="solid"
+node [ labeljust="l",colorscheme="paired12",style=filled,shape=record ]
+ExitBridge [label="ExitBridge",fillcolor=4]
+EnterBridge [label="EnterBridge",fillcolor=3]
+AccessToBridge [label="AccessToBridge",fillcolor=2]
+}}
