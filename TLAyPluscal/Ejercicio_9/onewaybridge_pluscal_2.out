@@ -1,0 +1,66 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.20 of Day Month 20?? (rev: 5c7ac66)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 19 and seed 8546217507908777531 with 8 workers on 8 cores with 5426MB heap and 64MB offheap memory [pid: 8500] (Windows 11 10.0 amd64, Oracle Corporation 17.0.2 x86_64, MSBDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file C:\Users\fatmi\OneDrive\Documentos\UNI\QUINTO\ISI\ISI\TLAyPluscal\Ejercicio_9\onewaybridge_pluscal_2.tla (file:/c:/Users/fatmi/OneDrive/Documentos/UNI/QUINTO/ISI/ISI/TLAyPluscal/Ejercicio_9/onewaybridge_pluscal_2.tla)
+Warning: symbols were renamed.
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-5520665662901106634\FiniteSets.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.10.160844-universal/tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-5520665662901106634\Integers.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.10.160844-universal/tools/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-5520665662901106634\Naturals.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.10.160844-universal/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-5520665662901106634\Sequences.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.10.160844-universal/tools/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module Integers
+Semantic processing of module onewaybridge_pluscal_2
+Linting of module onewaybridge_pluscal_2
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2025-10-18 12:56:24)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2212:0 @!@!@
+Implied-temporal checking--satisfiability problem has 2 branches.
+@!@!@ENDMSG 2212 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated at 2025-10-18 12:56:24.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(13) at 2025-10-18 12:56:24: 65 states generated, 42 distinct states found, 0 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2192:0 @!@!@
+Checking 2 branches of temporal properties for the complete state space with 84 total distinct states at (2025-10-18 12:56:24)
+@!@!@ENDMSG 2192 @!@!@
+@!@!@STARTMSG 2267:0 @!@!@
+Finished checking temporal properties in 00s at 2025-10-18 12:56:24
+@!@!@ENDMSG 2267 @!@!@
+@!@!@STARTMSG 2193:0 @!@!@
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 5.2E-17
+@!@!@ENDMSG 2193 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(13) at 2025-10-18 12:56:24: 65 states generated (4.318 s/min), 42 distinct states found (2.790 ds/min), 0 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+65 states generated, 42 distinct states found, 0 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 13.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2268:0 @!@!@
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 2 and the 95th percentile is 2).
+@!@!@ENDMSG 2268 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 913ms at (2025-10-18 12:56:24)
+@!@!@ENDMSG 2186 @!@!@
