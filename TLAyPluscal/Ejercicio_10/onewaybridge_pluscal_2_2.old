@@ -1,4 +1,4 @@
----- MODULE onewaybridge_pluscal_2 ----
+---- MODULE onewaybridge_pluscal_2_2 ----
 EXTENDS FiniteSets, Integers
 
 CONSTANT 
@@ -12,18 +12,18 @@ ASSUME \A car \in INITIAL_CARS_R \cup INITIAL_CARS_L: car \in STRING
 ASSUME MAX_CARS_L >= Cardinality(INITIAL_CARS_L) 
 ASSUME MAX_CARS_R >= Cardinality(INITIAL_CARS_R)
 
-MAX_CARS  == [island \in ISLANDS |-> IF island = "left" THEN MAX_CARS_L 
-                                    ELSE MAX_CARS_R]
-
 (*--algorithm OneWayBridgeLights {
 variables 
     lights    = [island \in ISLANDS |-> "red"];  
     sensors   = [island \in ISLANDS |-> {}], 
     bridgeCam = {}, 
     cars      = [island \in ISLANDS |-> IF island = "left" THEN INITIAL_CARS_L 
-                                      ELSE INITIAL_CARS_R]
+                                      ELSE INITIAL_CARS_R],
+    MAX_CARS  = [island \in ISLANDS |-> IF island = "left" THEN MAX_CARS_L 
+                                      ELSE MAX_CARS_R], 
 
 fair process (AccessToBridge = "accesstobridge")
+    variable otherIsland = "";
 {   AccessToBridge:
     while (TRUE) {
         with (anIsland \in ISLANDS) {
@@ -34,19 +34,22 @@ fair process (AccessToBridge = "accesstobridge")
                 }
             }
             or{ \* switch light into green 
-                when ( LET otherIsland == IF anIsland = "left" THEN "right" ELSE "left" IN
-                       /\ sensors[anIsland] /= {}
-                       /\ Cardinality(cars[otherIsland]) 
-                            < MAX_CARS[otherIsland]
+                otherIsland := IF anIsland = "left" THEN "right" ELSE "left";
+                when ( /\ sensors[anIsland] /= {}
+                       /\ Cardinality(cars[otherIsland]) < MAX_CARS[otherIsland]
                        /\ bridgeCam = {}
                        /\ lights[anIsland]     = "red"
                        /\ lights[otherIsland]  = "red"
                 );
 
                 lights[anIsland] := "green";            
-            }}}}
+            }
+        }
+    } 
+}
 
 fair process (EnterBridge = "enterbridge")
+    variable otherIsland = "", leavingIsland = "";
 {   EnterBridge:
     while (TRUE) {
         with (anIsland \in ISLANDS) {
@@ -56,13 +59,16 @@ fair process (EnterBridge = "enterbridge")
                 sensors[anIsland] := {};
                 cars[anIsland] := cars[anIsland] \ {car}; 
 
-                lights[anIsland] := "red"; 
+                otherIsland := IF leavingIsland = "left" THEN "right" ELSE "left";
+                bridgeCam := bridgeCam \cup {<<car, otherIsland>>};
 
-                bridgeCam := 
-                    LET otherIsland == IF anIsland = "left" THEN "right" ELSE "left"
-                    IN 
-                        bridgeCam \cup {<<car, otherIsland>>};
-            }}}}
+                leavingIsland := anIsland;
+
+                lights[leavingIsland] := "red"; 
+            };
+        };
+    }    
+}
 
 fair process (ExitBridge ="exitbridge") 
 {   ExitBridge:
@@ -71,15 +77,21 @@ fair process (ExitBridge ="exitbridge")
         with (carInBridge \in bridgeCam) { 
             bridgeCam := {};
             cars[carInBridge[2]] := cars[carInBridge[2]] \cup {carInBridge[1]}; 
-        }}}}
+        }
+    }
+}
+}
 *)
-\* BEGIN TRANSLATION (chksum(pcal) = "e8fa3c83" /\ chksum(tla) = "e5c35d94")
+\* BEGIN TRANSLATION (chksum(pcal) = "ecb38c9" /\ chksum(tla) = "f160ba9f")
 \* Label AccessToBridge of process AccessToBridge at line 28 col 5 changed to AccessToBridge_
-\* Label EnterBridge of process EnterBridge at line 51 col 5 changed to EnterBridge_
-\* Label ExitBridge of process ExitBridge at line 69 col 5 changed to ExitBridge_
-VARIABLES lights, sensors, bridgeCam, cars
+\* Label EnterBridge of process EnterBridge at line 54 col 5 changed to EnterBridge_
+\* Label ExitBridge of process ExitBridge at line 75 col 5 changed to ExitBridge_
+\* Process variable otherIsland of process AccessToBridge at line 26 col 14 changed to otherIsland_
+VARIABLES lights, sensors, bridgeCam, cars, MAX_CARS, otherIsland_, 
+          otherIsland, leavingIsland
 
-vars == << lights, sensors, bridgeCam, cars >>
+vars == << lights, sensors, bridgeCam, cars, MAX_CARS, otherIsland_, 
+           otherIsland, leavingIsland >>
 
 ProcSet == {"accesstobridge"} \cup {"enterbridge"} \cup {"exitbridge"}
 
@@ -89,40 +101,49 @@ Init == (* Global variables *)
         /\ bridgeCam = {}
         /\ cars = [island \in ISLANDS |-> IF island = "left" THEN INITIAL_CARS_L
                                         ELSE INITIAL_CARS_R]
+        /\ MAX_CARS = [island \in ISLANDS |-> IF island = "left" THEN MAX_CARS_L
+                                            ELSE MAX_CARS_R]
+        (* Process AccessToBridge *)
+        /\ otherIsland_ = ""
+        (* Process EnterBridge *)
+        /\ otherIsland = ""
+        /\ leavingIsland = ""
 
 AccessToBridge == /\ \E anIsland \in ISLANDS:
                        \/ /\ (sensors[anIsland] = {})
                           /\ \E car \in cars[anIsland]:
                                sensors' = [sensors EXCEPT ![anIsland] = sensors[anIsland] \union {car}]
-                          /\ UNCHANGED lights
-                       \/ /\      ( LET otherIsland == IF anIsland = "left" THEN "right" ELSE "left" IN
-                                    /\ sensors[anIsland] /= {}
-                                    /\ Cardinality(cars[otherIsland])
-                                         < MAX_CARS[otherIsland]
+                          /\ UNCHANGED <<lights, otherIsland_>>
+                       \/ /\ otherIsland_' = (IF anIsland = "left" THEN "right" ELSE "left")
+                          /\      ( /\ sensors[anIsland] /= {}
+                                    /\ Cardinality(cars[otherIsland_']) < MAX_CARS[otherIsland_']
                                     /\ bridgeCam = {}
                                     /\ lights[anIsland]     = "red"
-                                    /\ lights[otherIsland]  = "red"
+                                    /\ lights[otherIsland_']  = "red"
                              )
                           /\ lights' = [lights EXCEPT ![anIsland] = "green"]
                           /\ UNCHANGED sensors
-                  /\ UNCHANGED << bridgeCam, cars >>
+                  /\ UNCHANGED << bridgeCam, cars, MAX_CARS, otherIsland, 
+                                  leavingIsland >>
 
-EnterBridge == \E anIsland \in ISLANDS:
-                 /\ ( /\ sensors[anIsland] /= {}
-                      /\ lights [anIsland] =  "green" )
-                 /\ \E car \in sensors[anIsland]:
-                      /\ sensors' = [sensors EXCEPT ![anIsland] = {}]
-                      /\ cars' = [cars EXCEPT ![anIsland] = cars[anIsland] \ {car}]
-                      /\ lights' = [lights EXCEPT ![anIsland] = "red"]
-                      /\ bridgeCam' = (LET otherIsland == IF anIsland = "left" THEN "right" ELSE "left"
-                                       IN
-                                           bridgeCam \cup {<<car, otherIsland>>})
+EnterBridge == /\ \E anIsland \in ISLANDS:
+                    /\ ( /\ sensors[anIsland] /= {}
+                         /\ lights [anIsland] =  "green" )
+                    /\ \E car \in sensors[anIsland]:
+                         /\ sensors' = [sensors EXCEPT ![anIsland] = {}]
+                         /\ cars' = [cars EXCEPT ![anIsland] = cars[anIsland] \ {car}]
+                         /\ otherIsland' = (IF leavingIsland = "left" THEN "right" ELSE "left")
+                         /\ bridgeCam' = (bridgeCam \cup {<<car, otherIsland'>>})
+                         /\ leavingIsland' = anIsland
+                         /\ lights' = [lights EXCEPT ![leavingIsland'] = "red"]
+               /\ UNCHANGED << MAX_CARS, otherIsland_ >>
 
 ExitBridge == /\ (bridgeCam /= {})
               /\ \E carInBridge \in bridgeCam:
                    /\ bridgeCam' = {}
                    /\ cars' = [cars EXCEPT ![carInBridge[2]] = cars[carInBridge[2]] \cup {carInBridge[1]}]
-              /\ UNCHANGED << lights, sensors >>
+              /\ UNCHANGED << lights, sensors, MAX_CARS, otherIsland_, 
+                              otherIsland, leavingIsland >>
 
 Next == AccessToBridge \/ EnterBridge \/ ExitBridge
 
@@ -132,7 +153,6 @@ Spec == /\ Init /\ [][Next]_vars
         /\ WF_vars(ExitBridge)
 
 \* END TRANSLATION 
-
 
 \* Invriants
 MaxCapInv ==
@@ -184,5 +204,4 @@ TurnRojo ==
             (lights[isl] = "green" /\ bridgeCam # {}) 
               => lights[isl] = "red"
     )
-
 ====

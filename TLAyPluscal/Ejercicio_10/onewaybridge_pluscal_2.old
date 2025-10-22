@@ -1,0 +1,85 @@
+---- MODULE onewaybridge_pluscal_2 ----
+EXTENDS FiniteSets, Integers
+
+CONSTANT 
+    MAX_CARS_L,       \* max number of cars in left  island
+    MAX_CARS_R,       \* max number of cars in right island
+    INITIAL_CARS_L,   \* set of cars initially in left  island
+    INITIAL_CARS_R,   \* set of cars initially in right island
+    ISLANDS           \* set of names of islands
+
+ASSUME \A car \in INITIAL_CARS_R \cup INITIAL_CARS_L: car \in STRING
+ASSUME MAX_CARS_L >= Cardinality(INITIAL_CARS_L) 
+ASSUME MAX_CARS_R >= Cardinality(INITIAL_CARS_R)
+
+(*--algorithm OneWayBridgeLights {
+variables 
+    lights    = [island \in ISLANDS |-> "red"];  
+    sensors   = [island \in ISLANDS |-> {}], 
+    bridgeCam = {}, 
+    cars      = [island \in ISLANDS |-> IF island = "left" THEN INITIAL_CARS_L 
+                                      ELSE INITIAL_CARS_R],
+    MAX_CARS  = [island \in ISLANDS |-> IF island = "left" THEN MAX_CARS_L 
+                                      ELSE MAX_CARS_R], 
+
+fair process (AccessToBridge = "accesstobridge")
+    variable otherIsland = "";
+{   AccessToBridge:
+    while (TRUE) {
+        with (anIsland \in ISLANDS) {
+            either{ \* car moves into sensor
+                when (sensors[anIsland] = {}); 
+                with (car \in cars[anIsland]) {
+                    sensors[anIsland] := sensors[anIsland] \union {car};
+                }
+            }
+            or{ \* switch light into green 
+                otherIsland := IF anIsland = "left" THEN "right" ELSE "left";
+                when ( /\ sensors[anIsland] /= {}
+                       /\ Cardinality(cars[otherIsland]) < MAX_CARS[otherIsland]
+                       /\ bridgeCam = {}
+                       /\ lights[anIsland]     = "red"
+                       /\ lights[otherIsland]  = "red"
+                );
+
+                lights[anIsland] := "green";            
+            }
+        }
+    } 
+}
+
+process (EnterBridge = "enterbridge")
+    variable otherIsland = "", leavingIsland = "";
+{   EnterBridge:
+    while (TRUE) {
+        with (anIsland \in ISLANDS) {
+            when ( /\ sensors[anIsland] /= {}
+                   /\ lights [anIsland] =  "green" );                
+            with (car \in sensors[anIsland]) {
+                sensors[anIsland] := {};
+                cars[anIsland] := cars[anIsland] \ {car}; 
+
+                otherIsland := IF leavingIsland = "left" THEN "right" ELSE "left";
+                bridgeCam := bridgeCam \cup {<<car, otherIsland>>};
+
+                leavingIsland := anIsland;
+            };
+        };
+        LightsToRed:
+        if (leavingIsland /= "") lights[leavingIsland] := "red"; 
+    }    
+}
+
+fair process (ExitBridge ="exitbridge") 
+{   ExitBridge:
+    while (TRUE) {
+        when (bridgeCam /= {});
+        with (carInBridge \in bridgeCam) { 
+            bridgeCam := {};
+            cars[carInBridge[2]] := cars[carInBridge[2]] \cup {carInBridge[1]}; 
+        }
+    }
+}
+}
+*)
+====

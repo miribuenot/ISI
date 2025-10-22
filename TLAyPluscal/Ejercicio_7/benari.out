@@ -1,0 +1,165 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.20 of Day Month 20?? (rev: 5c7ac66)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 52 and seed -3194585612714559103 with 8 workers on 8 cores with 5426MB heap and 64MB offheap memory [pid: 32436] (Windows 11 10.0 amd64, Oracle Corporation 17.0.2 x86_64, MSBDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file C:\Users\fatmi\OneDrive\Documentos\UNI\QUINTO\ISI\ISI\TLAyPluscal\Ejercicio_7\benari.tla (file:/c:/Users/fatmi/OneDrive/Documentos/UNI/QUINTO/ISI/ISI/TLAyPluscal/Ejercicio_7/benari.tla)
+Warning: symbols were renamed.
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-11389399472001498572\Integers.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.10.160844-universal/tools/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-11389399472001498572\TLC.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.10.160844-universal/tools/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-11389399472001498572\Naturals.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.10.160844-universal/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-11389399472001498572\Sequences.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.10.160844-universal/tools/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file C:\Users\fatmi\AppData\Local\Temp\tlc-11389399472001498572\FiniteSets.tla (jar:file:/C:/Users/fatmi/.vscode-oss/extensions/tlaplus.vscode-ide-2025.10.160844-universal/tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module benari
+Linting of module benari
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2025-10-22 09:57:17)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated at 2025-10-22 09:57:17.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2112:1 @!@!@
+Action property AlwaysIncreasing is violated.
+@!@!@ENDMSG 2112 @!@!@
+@!@!@STARTMSG 2121:1 @!@!@
+The behavior up to this point is:
+@!@!@ENDMSG 2121 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ reg = [Thread_1 |-> defaultInitValue, Thread_2 |-> defaultInitValue]
+/\ n = 0
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "Benari", Thread_2 |-> "Benari"]
+/\ count = [Thread_1 |-> 0, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <Benari("Thread_2") line 76, col 17 to line 80, col 48 of module benari>
+/\ reg = [Thread_1 |-> defaultInitValue, Thread_2 |-> defaultInitValue]
+/\ n = 0
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "Benari", Thread_2 |-> "A1"]
+/\ count = [Thread_1 |-> 0, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+3: <Benari("Thread_1") line 76, col 17 to line 80, col 48 of module benari>
+/\ reg = [Thread_1 |-> defaultInitValue, Thread_2 |-> defaultInitValue]
+/\ n = 0
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A1", Thread_2 |-> "A1"]
+/\ count = [Thread_1 |-> 0, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+4: <A1("Thread_1") line 82, col 13 to line 85, col 39 of module benari>
+/\ reg = [Thread_1 |-> 0, Thread_2 |-> defaultInitValue]
+/\ n = 0
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A2", Thread_2 |-> "A1"]
+/\ count = [Thread_1 |-> 0, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+5: <A2("Thread_1") line 87, col 13 to line 90, col 39 of module benari>
+/\ reg = [Thread_1 |-> 1, Thread_2 |-> defaultInitValue]
+/\ n = 0
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A3", Thread_2 |-> "A1"]
+/\ count = [Thread_1 |-> 0, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+6: <A1("Thread_2") line 82, col 13 to line 85, col 39 of module benari>
+/\ reg = [Thread_1 |-> 1, Thread_2 |-> 0]
+/\ n = 0
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A3", Thread_2 |-> "A2"]
+/\ count = [Thread_1 |-> 0, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+7: <A3("Thread_1") line 92, col 13 to line 95, col 41 of module benari>
+/\ reg = [Thread_1 |-> 1, Thread_2 |-> 0]
+/\ n = 1
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A4", Thread_2 |-> "A2"]
+/\ count = [Thread_1 |-> 0, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+8: <A4("Thread_1") line 97, col 13 to line 100, col 37 of module benari>
+/\ reg = [Thread_1 |-> 1, Thread_2 |-> 0]
+/\ n = 1
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "Benari", Thread_2 |-> "A2"]
+/\ count = [Thread_1 |-> 1, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+9: <Benari("Thread_1") line 76, col 17 to line 80, col 48 of module benari>
+/\ reg = [Thread_1 |-> 1, Thread_2 |-> 0]
+/\ n = 1
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A1", Thread_2 |-> "A2"]
+/\ count = [Thread_1 |-> 1, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+10: <A1("Thread_1") line 82, col 13 to line 85, col 39 of module benari>
+/\ reg = [Thread_1 |-> 1, Thread_2 |-> 0]
+/\ n = 1
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A2", Thread_2 |-> "A2"]
+/\ count = [Thread_1 |-> 1, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+11: <A2("Thread_1") line 87, col 13 to line 90, col 39 of module benari>
+/\ reg = [Thread_1 |-> 2, Thread_2 |-> 0]
+/\ n = 1
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A3", Thread_2 |-> "A2"]
+/\ count = [Thread_1 |-> 1, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+12: <A2("Thread_2") line 87, col 13 to line 90, col 39 of module benari>
+/\ reg = [Thread_1 |-> 2, Thread_2 |-> 1]
+/\ n = 1
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A3", Thread_2 |-> "A3"]
+/\ count = [Thread_1 |-> 1, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+13: <A3("Thread_1") line 92, col 13 to line 95, col 41 of module benari>
+/\ reg = [Thread_1 |-> 2, Thread_2 |-> 1]
+/\ n = 2
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A4", Thread_2 |-> "A3"]
+/\ count = [Thread_1 |-> 1, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+14: <A3("Thread_2") line 92, col 13 to line 95, col 41 of module benari>
+/\ reg = [Thread_1 |-> 2, Thread_2 |-> 1]
+/\ n = 1
+/\ pc = [Watcher |-> "Watcher_", Thread_1 |-> "A4", Thread_2 |-> "A4"]
+/\ count = [Thread_1 |-> 1, Thread_2 |-> 0]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(17) at 2025-10-22 09:57:17: 345 states generated (13.573 s/min), 220 distinct states found (8.655 ds/min), 46 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+345 states generated, 220 distinct states found, 46 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 17.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 1534ms at (2025-10-22 09:57:17)
+@!@!@ENDMSG 2186 @!@!@
