@@ -6,8 +6,14 @@ variables n = 0;
 
 define {
     Threads == {"Thread_1", "Thread_2"}
-    Reaches2AsInvariant == ( /\ pc["Thread_1"] = "Done" 
+
+    NoReaches21AsInvariant == ( /\ pc["Thread_1"] = "Done" 
+                              /\ pc["Thread_2"] = "Done") => n # 21
+    Between2and20AsInvariant == ( /\ pc["Thread_1"] = "Done" 
                               /\ pc["Thread_2"] = "Done") => n \in (2..20)
+    NoReaches1AsInvariant == ( /\ pc["Thread_1"] = "Done" 
+                            /\ pc["Thread_2"] = "Done") => n # 1
+    AlwaysIncreasing == [] [n' > n]_n
 }
 
 process (inc10 \in Threads) 
@@ -37,15 +43,21 @@ process (Watcher = "Watcher"){
 }
 }
 *)
-\* BEGIN TRANSLATION (chksum(pcal) = "bf0fd23b" /\ chksum(tla) = "8920d558")
-\* Label Watcher of process Watcher at line 35 col 5 changed to Watcher_
+\* BEGIN TRANSLATION (chksum(pcal) = "50f9c6d" /\ chksum(tla) = "7c6e05b")
+\* Label Watcher of process Watcher at line 41 col 5 changed to Watcher_
 CONSTANT defaultInitValue
 VARIABLES pc, n
 
 (* define statement *)
 Threads == {"Thread_1", "Thread_2"}
-Reaches2AsInvariant == ( /\ pc["Thread_1"] = "Done"
+
+NoReaches21AsInvariant == ( /\ pc["Thread_1"] = "Done"
+                          /\ pc["Thread_2"] = "Done") => n # 21
+Between2and20AsInvariant == ( /\ pc["Thread_1"] = "Done"
                           /\ pc["Thread_2"] = "Done") => n \in (2..20)
+NoReaches1AsInvariant == ( /\ pc["Thread_1"] = "Done"
+                        /\ pc["Thread_2"] = "Done") => n # 1
+AlwaysIncreasing == [] [n' > n]_n
 
 VARIABLES reg, count
 
