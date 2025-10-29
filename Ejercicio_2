@@ -1,0 +1,394 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ mkdir ejercicio-2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ cd ejercicio-2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git init
+ayuda: Usando 'master' como el nombre de la rama inicial. Este nombre de rama predeterminado
+ayuda: está sujeto a cambios. Para configurar el nombre de la rama inicial para usar en todos
+ayuda: de sus nuevos repositorios, reprimiendo esta advertencia, llama a:
+ayuda: 
+ayuda: 	git config --global init.defaultBranch <nombre>
+ayuda: 
+ayuda: Los nombres comúnmente elegidos en lugar de 'master' son 'main', 'trunk' y
+ayuda: 'development'. Se puede cambiar el nombre de la rama recién creada mediante este comando:
+ayuda: 
+ayuda: 	git branch -m <nombre>
+Inicializado repositorio Git vacío en /home/propietario/Documentos/ISI/GIT/ejercicio-2/.git/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo "Leche" > s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo "Tomate pelado" >> s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo "Tomate ecológico" >> s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo "Queso" >> s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo "Yoghourt griego" >> s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git add s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git commit -m "añadido s1"
+[master (commit-raíz) b72329f] añadido s1
+ 1 file changed, 5 insertions(+)
+ create mode 100644 s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ gitgraph
+* b72329f (HEAD -> master) añadido s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ cat s1 > s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo "Pan" >> s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ cat s2
+Leche
+Tomate pelado
+Tomate ecológico
+Queso
+Yoghourt griego
+Pan
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ sed -i '/Queso/d' s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ cat s1
+Leche
+Tomate pelado
+Tomate ecológico
+Yoghourt griego
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git add s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git add s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git status
+En la rama master
+Cambios a ser confirmados:
+  (usa "git restore --staged <archivo>..." para sacar del área de stage)
+	modificados:     s1
+	nuevos archivos: s2
+
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged
+diff --git a/s1 b/s1
+index 5aad170..eb8dc85 100644
+--- a/s1
++++ b/s1
+@@ -1,5 +1,4 @@
+ Leche
+ Tomate pelado
+ Tomate ecológico
+-Queso
+ Yoghourt griego
+diff --git a/s2 b/s2
+new file mode 100644
+index 0000000..ae0c9c0
+--- /dev/null
++++ b/s2
+@@ -0,0 +1,6 @@
++Leche
++Tomate pelado
++Tomate ecológico
++Queso
++Yoghourt griego
++Pan
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git commit -m "s1 no tiene queso, s2 tiene pan"
+[master 63f506c] s1 no tiene queso, s2 tiene pan
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+ create mode 100644 s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git deif --staged
+git: 'deif' no es un comando de git. Mira 'git --help'.
+
+El comando más similar es
+	diff
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git log
+commit 63f506cf6dba85fcb811243447f1bd62b15c9b70 (HEAD -> master)
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 09:04:05 2025 +0100
+
+    s1 no tiene queso, s2 tiene pan
+
+commit b72329fe485e58ecfbca6e4dc8be9295a8246eae
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 08:58:46 2025 +0100
+
+    añadido s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged b72329fe485e58ecfbca6e4dc8be9295a8246eae
+diff --git a/s1 b/s1
+index 5aad170..eb8dc85 100644
+--- a/s1
++++ b/s1
+@@ -1,5 +1,4 @@
+ Leche
+ Tomate pelado
+ Tomate ecológico
+-Queso
+ Yoghourt griego
+diff --git a/s2 b/s2
+new file mode 100644
+index 0000000..ae0c9c0
+--- /dev/null
++++ b/s2
+@@ -0,0 +1,6 @@
++Leche
++Tomate pelado
++Tomate ecológico
++Queso
++Yoghourt griego
++Pan
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git rm s2
+rm 's2'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git commit -m "borrado s2"
+[master a501c0b] borrado s2
+ 1 file changed, 6 deletions(-)
+ delete mode 100644 s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git status
+En la rama master
+nada para hacer commit, el árbol de trabajo está limpio
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ gitgraph
+* a501c0b (HEAD -> master) borrado s2
+* 63f506c s1 no tiene queso, s2 tiene pan
+* b72329f añadido s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git blame s1
+^b72329f (MTB 2025-10-29 08:58:46 +0100 1) Leche
+^b72329f (MTB 2025-10-29 08:58:46 +0100 2) Tomate pelado
+^b72329f (MTB 2025-10-29 08:58:46 +0100 3) Tomate ecológico
+^b72329f (MTB 2025-10-29 08:58:46 +0100 4) Yoghourt griego
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git log
+commit a501c0bfc0dfedf370e1f9370550412f92b5ec81 (HEAD -> master)
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 09:07:56 2025 +0100
+
+    borrado s2
+
+commit 63f506cf6dba85fcb811243447f1bd62b15c9b70
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 09:04:05 2025 +0100
+
+    s1 no tiene queso, s2 tiene pan
+
+commit b72329fe485e58ecfbca6e4dc8be9295a8246eae
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 08:58:46 2025 +0100
+
+    añadido s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff a501c0bfc0dfedf370e1f9370550412f92b5ec81 s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s2
+fatal: argumento ambiguo 's2': revisión desconocida o ruta fuera del árbol de trabajo.
+Usa '--' para separar las rutas de las revisiones, de esta manera:
+'git <comando> [<revisión>...] -- [<archivo>...]'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff HEAD s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff HEAD s2
+fatal: argumento ambiguo 's2': revisión desconocida o ruta fuera del árbol de trabajo.
+Usa '--' para separar las rutas de las revisiones, de esta manera:
+'git <comando> [<revisión>...] -- [<archivo>...]'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff a501c0bfc0dfedf370e1f9370550412f92b5ec81 s2
+fatal: argumento ambiguo 's2': revisión desconocida o ruta fuera del árbol de trabajo.
+Usa '--' para separar las rutas de las revisiones, de esta manera:
+'git <comando> [<revisión>...] -- [<archivo>...]'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo -n '' > s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ cat s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff HEAD s1
+diff --git a/s1 b/s1
+index eb8dc85..e69de29 100644
+--- a/s1
++++ b/s1
+@@ -1,4 +0,0 @@
+-Leche
+-Tomate pelado
+-Tomate ecológico
+-Yoghourt griego
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s1
+diff --git a/s1 b/s1
+index eb8dc85..e69de29 100644
+--- a/s1
++++ b/s1
+@@ -1,4 +0,0 @@
+-Leche
+-Tomate pelado
+-Tomate ecológico
+-Yoghourt griego
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git checkout -- s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff HEAD s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo "Fregona" >> s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git add s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff HEAD s1
+diff --git a/s1 b/s1
+index eb8dc85..42d0d40 100644
+--- a/s1
++++ b/s1
+@@ -2,3 +2,4 @@ Leche
+ Tomate pelado
+ Tomate ecológico
+ Yoghourt griego
++Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged  s1
+diff --git a/s1 b/s1
+index eb8dc85..42d0d40 100644
+--- a/s1
++++ b/s1
+@@ -2,3 +2,4 @@ Leche
+ Tomate pelado
+ Tomate ecológico
+ Yoghourt griego
++Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo -n '' > s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s1
+diff --git a/s1 b/s1
+index 42d0d40..e69de29 100644
+--- a/s1
++++ b/s1
+@@ -1,5 +0,0 @@
+-Leche
+-Tomate pelado
+-Tomate ecológico
+-Yoghourt griego
+-Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff HEAD s1
+diff --git a/s1 b/s1
+index eb8dc85..e69de29 100644
+--- a/s1
++++ b/s1
+@@ -1,4 +0,0 @@
+-Leche
+-Tomate pelado
+-Tomate ecológico
+-Yoghourt griego
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged  s1
+diff --git a/s1 b/s1
+index eb8dc85..42d0d40 100644
+--- a/s1
++++ b/s1
+@@ -2,3 +2,4 @@ Leche
+ Tomate pelado
+ Tomate ecológico
+ Yoghourt griego
++Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git checkout -- s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged  s1
+diff --git a/s1 b/s1
+index eb8dc85..42d0d40 100644
+--- a/s1
++++ b/s1
+@@ -2,3 +2,4 @@ Leche
+ Tomate pelado
+ Tomate ecológico
+ Yoghourt griego
++Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff HEAD s1
+diff --git a/s1 b/s1
+index eb8dc85..42d0d40 100644
+--- a/s1
++++ b/s1
+@@ -2,3 +2,4 @@ Leche
+ Tomate pelado
+ Tomate ecológico
+ Yoghourt griego
++Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git checkout HEAD
+M	s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged  s1
+diff --git a/s1 b/s1
+index eb8dc85..42d0d40 100644
+--- a/s1
++++ b/s1
+@@ -2,3 +2,4 @@ Leche
+ Tomate pelado
+ Tomate ecológico
+ Yoghourt griego
++Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff HEAD s1
+diff --git a/s1 b/s1
+index eb8dc85..42d0d40 100644
+--- a/s1
++++ b/s1
+@@ -2,3 +2,4 @@ Leche
+ Tomate pelado
+ Tomate ecológico
+ Yoghourt griego
++Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git checkout HEAD -- s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff HEAD s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged  s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git log
+commit a501c0bfc0dfedf370e1f9370550412f92b5ec81 (HEAD -> master)
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 09:07:56 2025 +0100
+
+    borrado s2
+
+commit 63f506cf6dba85fcb811243447f1bd62b15c9b70
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 09:04:05 2025 +0100
+
+    s1 no tiene queso, s2 tiene pan
+
+commit b72329fe485e58ecfbca6e4dc8be9295a8246eae
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 08:58:46 2025 +0100
+
+    añadido s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git checkout HEAD~ -- s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git checkout HEAD -- s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged  s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged  s2
+diff --git a/s2 b/s2
+new file mode 100644
+index 0000000..ae0c9c0
+--- /dev/null
++++ b/s2
+@@ -0,0 +1,6 @@
++Leche
++Tomate pelado
++Tomate ecológico
++Queso
++Yoghourt griego
++Pan
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git checkout HEAD -- s2
+error: ruta especificada 's2' no concordó con ningún archivo conocido por git
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git status
+En la rama master
+Cambios a ser confirmados:
+  (usa "git restore --staged <archivo>..." para sacar del área de stage)
+	nuevos archivos: s2
+
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git add s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git commit -m "recuperado s2"
+[master 6bcfc25] recuperado s2
+ 1 file changed, 6 insertions(+)
+ create mode 100644 s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff --staged  s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git diff HEAD s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ touch p1.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ touch p2.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ touch p1.class
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ touch p2.class
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ touch log1.log
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ mkdir logs
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ cd logs
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2/logs$ touch log1.log
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2/logs$ touch log2.log
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2/logs$ cd ..
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ touch .gitignore
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo "*.class" >> .gitignore
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ cat .gitignore
+*.class
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ echo "logs/*.log" >> .gitignore
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ cat .gitignore
+*.class
+logs/*.log
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git add .
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git status
+En la rama master
+Cambios a ser confirmados:
+  (usa "git restore --staged <archivo>..." para sacar del área de stage)
+	nuevos archivos: .gitignore
+	nuevos archivos: log1.log
+	nuevos archivos: p1.java
+	nuevos archivos: p2.java
+
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ git commit -m "añadidos .gitignore, p1.java, p2.java y log1.log"
+[master 7719d08] añadidos .gitignore, p1.java, p2.java y log1.log
+ 4 files changed, 2 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 log1.log
+ create mode 100644 p1.java
+ create mode 100644 p2.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ gitgraph
+* 7719d08 (HEAD -> master) añadidos .gitignore, p1.java, p2.java y log1.log
+* 6bcfc25 recuperado s2
+* a501c0b borrado s2
+* 63f506c s1 no tiene queso, s2 tiene pan
+* b72329f añadido s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-2$ 
