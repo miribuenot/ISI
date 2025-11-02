@@ -1,0 +1,125 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git branch new-feature
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout new-feature
+Cambiado a rama 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ nano s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s1
+Tomate pelado
+Tomate Orlando
+Queso
+Yoghourt griego
+Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git diff
+diff --git a/s1 b/s1
+index e51ea94..b476152 100644
+--- a/s1
++++ b/s1
+@@ -1,6 +1,5 @@
+-Leche desnatada
+ Tomate pelado
+-Tomate ecológico
++Tomate Orlando
+ Queso
+ Yoghourt griego
+ Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git diff --staged
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git add s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git diff
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git diff --staged
+diff --git a/s1 b/s1
+index e51ea94..b476152 100644
+--- a/s1
++++ b/s1
+@@ -1,6 +1,5 @@
+-Leche desnatada
+ Tomate pelado
+-Tomate ecológico
++Tomate Orlando
+ Queso
+ Yoghourt griego
+ Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git commit -m "C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando"
+[new-feature e382bef] C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ nano s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s1
+Leche desnatada
+Tomate pelado
+Queso
+Yoghourt
+Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git commit -a -m "C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico"
+[master e2caaa5] C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+* e2caaa5 (HEAD -> master) C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+| * e382bef (new-feature) C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+|/  
+*   acda66b C5: Merge branch 'bugFix'
+|\  
+| * 2770ecb Cambiada Leche por Leche desnatada
+* | a010e1a añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git merge new-feature
+Auto-fusionando s1
+CONFLICTO (contenido): Conflicto de fusión en s1
+Fusión automática falló; arregle los conflictos y luego realice un commit con el resultado.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s1
+Tomate pelado
+<<<<<<< HEAD
+=======
+Tomate Orlando
+>>>>>>> new-feature
+Queso
+Yoghourt
+Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git merge --abort
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s1
+Leche desnatada
+Tomate pelado
+Queso
+Yoghourt
+Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git merge --abort
+fatal: No hay una fusión para abortar (falta MERGE_HEAD)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git merge new-feature
+Auto-fusionando s1
+CONFLICTO (contenido): Conflicto de fusión en s1
+Fusión automática falló; arregle los conflictos y luego realice un commit con el resultado.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ nano s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git add s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git commit
+[master e443fb1] C8: Merge branch 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+*   e443fb1 (HEAD -> master) C8: Merge branch 'new-feature'
+|\  
+| * e382bef (new-feature) C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+* | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+|/  
+*   acda66b C5: Merge branch 'bugFix'
+|\  
+| * 2770ecb Cambiada Leche por Leche desnatada
+* | a010e1a añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git branch -d new-feature
+Eliminada la rama new-feature (era e382bef).
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+*   e443fb1 (HEAD -> master) C8: Merge branch 'new-feature'
+|\  
+| * e382bef C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+* | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+|/  
+*   acda66b C5: Merge branch 'bugFix'
+|\  
+| * 2770ecb Cambiada Leche por Leche desnatada
+* | a010e1a añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ 
+
