@@ -1,0 +1,117 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout 37c06b408e665d80b3bcaadb530e3129a185a00e
+Nota: cambiando a '37c06b408e665d80b3bcaadb530e3129a185a00e'.
+
+Te encuentras en estado 'detached HEAD'. Puedes revisar por aquí, hacer
+cambios experimentales y hacer commits, y puedes descartar cualquier
+commit que hayas hecho en este estado sin impactar a tu rama realizando
+otro checkout.
+
+Si quieres crear una nueva rama para mantener los commits que has creado,
+puedes hacerlo (ahora o después) usando -c con el comando checkout. Ejemplo:
+
+  git switch -c <nombre-de-nueva-rama>
+
+O deshacer la operación con:
+
+  git switch -
+
+Desactiva este aviso poniendo la variable de config advice.detachedHead en false
+
+HEAD está ahora en 37c06b4 creado s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+*   e443fb1 (master) C8: Merge branch 'new-feature'
+|\  
+| * e382bef C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+* | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+|/  
+*   acda66b C5: Merge branch 'bugFix'
+|\  
+| * 2770ecb Cambiada Leche por Leche desnatada
+* | a010e1a añadida Fregona
+|/  
+* 37c06b4 (HEAD) creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git branch
+* (HEAD desacoplado en 37c06b4)
+  master
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout master
+La posición previa de HEAD era 37c06b4 creado s2
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+*   e443fb1 (HEAD -> master) C8: Merge branch 'new-feature'
+|\  
+| * e382bef C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+* | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+|/  
+*   acda66b C5: Merge branch 'bugFix'
+|\  
+| * 2770ecb Cambiada Leche por Leche desnatada
+* | a010e1a añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout 37c06b408e665d80b3bcaadb530e3129a185a00e
+Nota: cambiando a '37c06b408e665d80b3bcaadb530e3129a185a00e'.
+
+Te encuentras en estado 'detached HEAD'. Puedes revisar por aquí, hacer
+cambios experimentales y hacer commits, y puedes descartar cualquier
+commit que hayas hecho en este estado sin impactar a tu rama realizando
+otro checkout.
+
+Si quieres crear una nueva rama para mantener los commits que has creado,
+puedes hacerlo (ahora o después) usando -c con el comando checkout. Ejemplo:
+
+  git switch -c <nombre-de-nueva-rama>
+
+O deshacer la operación con:
+
+  git switch -
+
+Desactiva este aviso poniendo la variable de config advice.detachedHead en false
+
+HEAD está ahora en 37c06b4 creado s2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ echo "Patatas" >> s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git commit -a -m "Añadido Patatas a s1"
+[HEAD desacoplado 053e4d0] Añadido Patatas a s1
+ 1 file changed, 1 insertion(+)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git branch nr
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+* 053e4d0 (HEAD, nr) Añadido Patatas a s1
+| *   e443fb1 (master) C8: Merge branch 'new-feature'
+| |\  
+| | * e382bef C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+| * | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+| |/  
+| *   acda66b C5: Merge branch 'bugFix'
+| |\  
+| | * 2770ecb Cambiada Leche por Leche desnatada
+| |/  
+|/|   
+| * a010e1a añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout nr
+Cambiado a rama 'nr'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ echo "Manzanas" >> s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git commit -a -m "C10: añadidas Manzanas a s1"
+[nr 893a3d4] C10: añadidas Manzanas a s1
+ 1 file changed, 1 insertion(+)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+* 893a3d4 (HEAD -> nr) C10: añadidas Manzanas a s1
+* 053e4d0 Añadido Patatas a s1
+| *   e443fb1 (master) C8: Merge branch 'new-feature'
+| |\  
+| | * e382bef C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+| * | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+| |/  
+| *   acda66b C5: Merge branch 'bugFix'
+| |\  
+| | * 2770ecb Cambiada Leche por Leche desnatada
+| |/  
+|/|   
+| * a010e1a añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ 
