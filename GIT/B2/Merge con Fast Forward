@@ -1,0 +1,57 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+* 2770ecb (HEAD -> bugFix) Cambiada Leche por Leche desnatada
+| * a010e1a (devel) añadida Fregona
+|/  
+* 37c06b4 (master) creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git status
+En la rama bugFix
+nada para hacer commit, el árbol de trabajo está limpio
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git diff master..devel
+diff --git a/s1 b/s1
+index 5aad170..494122a 100644
+--- a/s1
++++ b/s1
+@@ -3,3 +3,4 @@ Tomate pelado
+ Tomate ecológico
+ Queso
+ Yoghourt griego
++Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git diff master..bugFix
+diff --git a/s1 b/s1
+index 5aad170..9384b0e 100644
+--- a/s1
++++ b/s1
+@@ -1,4 +1,4 @@
+-Leche
++Leche desnatada
+ Tomate pelado
+ Tomate ecológico
+ Queso
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+* 2770ecb (bugFix) Cambiada Leche por Leche desnatada
+| * a010e1a (devel) añadida Fregona
+|/  
+* 37c06b4 (HEAD -> master) creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git merge devel
+Actualizando 37c06b4..a010e1a
+Fast-forward
+ s1 | 1 +
+ 1 file changed, 1 insertion(+)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+* 2770ecb (bugFix) Cambiada Leche por Leche desnatada
+| * a010e1a (HEAD -> master, devel) añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s1
+Leche
+Tomate pelado
+Tomate ecológico
+Queso
+Yoghourt griego
+Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ 
