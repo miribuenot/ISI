@@ -1,0 +1,124 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ mkdir alpha
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ cd alpha
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git init
+ayuda: Usando 'master' como el nombre de la rama inicial. Este nombre de rama predeterminado
+ayuda: está sujeto a cambios. Para configurar el nombre de la rama inicial para usar en todos
+ayuda: de sus nuevos repositorios, reprimiendo esta advertencia, llama a:
+ayuda: 
+ayuda: 	git config --global init.defaultBranch <nombre>
+ayuda: 
+ayuda: Los nombres comúnmente elegidos en lugar de 'master' son 'main', 'trunk' y
+ayuda: 'development'. Se puede cambiar el nombre de la rama recién creada mediante este comando:
+ayuda: 
+ayuda: 	git branch -m <nombre>
+Inicializado repositorio Git vacío en /home/propietario/Documentos/ISI/GIT/alpha/.git/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ mkdir data
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "a" > data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "a" > data/letra.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "1" > data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git add data/letra.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git add data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -m "a 1"
+[master (commit-raíz) 2639831] a 1
+ 2 files changed, 2 insertions(+)
+ create mode 100644 data/letra.txt
+ create mode 100644 data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "2" > data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a -m "a 2"
+[master b89736c] a 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git log
+commit b89736cdae1169a13843b03eb1dd03de99d79c57 (HEAD -> master)
+Author: MTB <miribuenot@gmail.com>
+Date:   Sun Nov 2 11:37:53 2025 +0100
+
+    a 2
+
+commit 26398318c346711e3ca5643c63ec18c4de769a9a
+Author: MTB <miribuenot@gmail.com>
+Date:   Sun Nov 2 11:37:32 2025 +0100
+
+    a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git checkout b89736cdae1169a13843b03eb1dd03de99d79c57
+Nota: cambiando a 'b89736cdae1169a13843b03eb1dd03de99d79c57'.
+
+Te encuentras en estado 'detached HEAD'. Puedes revisar por aquí, hacer
+cambios experimentales y hacer commits, y puedes descartar cualquier
+commit que hayas hecho en este estado sin impactar a tu rama realizando
+otro checkout.
+
+Si quieres crear una nueva rama para mantener los commits que has creado,
+puedes hacerlo (ahora o después) usando -c con el comando checkout. Ejemplo:
+
+  git switch -c <nombre-de-nueva-rama>
+
+O deshacer la operación con:
+
+  git switch -
+
+Desactiva este aviso poniendo la variable de config advice.detachedHead en false
+
+HEAD está ahora en b89736c a 2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "3" > data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a -m "a 3"
+[HEAD desacoplado 96f0b2c] a 3
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git branch new-feature
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git log
+commit 96f0b2cf267390280dd36fa43b00ac68e0c7b561 (HEAD, new-feature)
+Author: MTB <miribuenot@gmail.com>
+Date:   Sun Nov 2 11:39:01 2025 +0100
+
+    a 3
+
+commit b89736cdae1169a13843b03eb1dd03de99d79c57 (master)
+Author: MTB <miribuenot@gmail.com>
+Date:   Sun Nov 2 11:37:53 2025 +0100
+
+    a 2
+
+commit 26398318c346711e3ca5643c63ec18c4de769a9a
+Author: MTB <miribuenot@gmail.com>
+Date:   Sun Nov 2 11:37:32 2025 +0100
+
+    a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git branch
+* (HEAD desacoplado de b89736c)
+  master
+  new-feature
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git checkout master
+La posición previa de HEAD era 96f0b2c a 3
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitdiff master..new-feature
+No se ha encontrado la orden «gitdiff», pero se puede instalar con:
+sudo apt install patchutils
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git diff master..new-feature
+diff --git a/data/numero.txt b/data/numero.txt
+index 0cfbf08..00750ed 100644
+--- a/data/numero.txt
++++ b/data/numero.txt
+@@ -1 +1 @@
+-2
++3
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "789" > data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git checkout new-feature
+error: Los cambios locales de los siguientes archivos serán sobrescritos por checkout:
+	data/numero.txt
+Por favor realice un commit con los cambios o un stash antes de cambiar ramas.
+Abortando
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a -m "a 789"
+[master eac973c] a 789
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git checkout new-feature
+Cambiado a rama 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitdiff master..new-feature
+No se ha encontrado la orden «gitdiff», pero se puede instalar con:
+sudo apt install patchutils
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git diff master..new-feature
+diff --git a/data/numero.txt b/data/numero.txt
+index 0c2b781..00750ed 100644
+--- a/data/numero.txt
++++ b/data/numero.txt
+@@ -1 +1 @@
+-789
++3
