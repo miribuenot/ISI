@@ -1,0 +1,147 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+* 893a3d4 (HEAD -> nr) C10: añadidas Manzanas a s1
+* 053e4d0 Añadido Patatas a s1
+| *   e443fb1 (master) C8: Merge branch 'new-feature'
+| |\  
+| | * e382bef C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+| * | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+| |/  
+| *   acda66b C5: Merge branch 'bugFix'
+| |\  
+| | * 2770ecb Cambiada Leche por Leche desnatada
+| |/  
+|/|   
+| * a010e1a añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git status
+En la rama nr
+nada para hacer commit, el árbol de trabajo está limpio
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ echo "Peras" >> s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout nr
+error: Los cambios locales de los siguientes archivos serán sobrescritos por checkout:
+	s1
+Por favor realice un commit con los cambios o un stash antes de cambiar ramas.
+Abortando
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git stash
+Directorio de trabajo y estado de índice WIP on master: e443fb1 C8: Merge branch 'new-feature' guardados
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s1
+Tomate pelado
+Tomate Orlando
+Queso
+Yoghourt griego
+Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+*   431b0d2 (refs/stash) WIP on master: e443fb1 C8: Merge branch 'new-feature'
+|\  
+| * 9522a0a index on master: e443fb1 C8: Merge branch 'new-feature'
+|/  
+*   e443fb1 (HEAD -> master) C8: Merge branch 'new-feature'
+|\  
+| * e382bef C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+* | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+|/  
+*   acda66b C5: Merge branch 'bugFix'
+|\  
+| * 2770ecb Cambiada Leche por Leche desnatada
+* | a010e1a añadida Fregona
+|/  
+| * 893a3d4 (nr) C10: añadidas Manzanas a s1
+| * 053e4d0 Añadido Patatas a s1
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git status
+En la rama master
+nada para hacer commit, el árbol de trabajo está limpio
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout nr
+Cambiado a rama 'nr'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git stash apply
+En la rama master
+Cambios no rastreados para el commit:
+  (usa "git add <archivo>..." para actualizar lo que será confirmado)
+  (usa "git restore <archivo>..." para descartar los cambios en el directorio de trabajo)
+	modificados:     s1
+
+sin cambios agregados al commit (usa "git add" y/o "git commit -a")
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s1
+Tomate pelado
+Tomate Orlando
+Queso
+Yoghourt griego
+Fregona
+Peras
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+*   431b0d2 (refs/stash) WIP on master: e443fb1 C8: Merge branch 'new-feature'
+|\  
+| * 9522a0a index on master: e443fb1 C8: Merge branch 'new-feature'
+|/  
+*   e443fb1 (HEAD -> master) C8: Merge branch 'new-feature'
+|\  
+| * e382bef C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+* | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+|/  
+*   acda66b C5: Merge branch 'bugFix'
+|\  
+| * 2770ecb Cambiada Leche por Leche desnatada
+* | a010e1a añadida Fregona
+|/  
+| * 893a3d4 (nr) C10: añadidas Manzanas a s1
+| * 053e4d0 Añadido Patatas a s1
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git stash list
+stash@{0}: WIP on master: e443fb1 C8: Merge branch 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ echo "Manzanas" >> s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git stash
+Directorio de trabajo y estado de índice WIP on master: e443fb1 C8: Merge branch 'new-feature' guardados
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+*   6737894 (refs/stash) WIP on master: e443fb1 C8: Merge branch 'new-feature'
+|\  
+| * 7adbee2 index on master: e443fb1 C8: Merge branch 'new-feature'
+|/  
+*   e443fb1 (HEAD -> master) C8: Merge branch 'new-feature'
+|\  
+| * e382bef C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+* | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+|/  
+*   acda66b C5: Merge branch 'bugFix'
+|\  
+| * 2770ecb Cambiada Leche por Leche desnatada
+* | a010e1a añadida Fregona
+|/  
+| * 893a3d4 (nr) C10: añadidas Manzanas a s1
+| * 053e4d0 Añadido Patatas a s1
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git stash list
+stash@{0}: WIP on master: e443fb1 C8: Merge branch 'new-feature'
+stash@{1}: WIP on master: e443fb1 C8: Merge branch 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git stash clear
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git stash list
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+* 893a3d4 (nr) C10: añadidas Manzanas a s1
+* 053e4d0 Añadido Patatas a s1
+| *   e443fb1 (HEAD -> master) C8: Merge branch 'new-feature'
+| |\  
+| | * e382bef C6: borrada Leche desnatada, cambiado Tomate ecológico por Tomate Orlando
+| * | e2caaa5 C7: cambiado Yoghourt griego por Yoghourt y eliminado Tomate ecológico
+| |/  
+| *   acda66b C5: Merge branch 'bugFix'
+| |\  
+| | * 2770ecb Cambiada Leche por Leche desnatada
+| |/  
+|/|   
+| * a010e1a añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ 
+
