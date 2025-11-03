@@ -122,3 +122,224 @@ index 0c2b781..00750ed 100644
 @@ -1 +1 @@
 -789
 +3
+
+
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* eac973c (master) a 789
+| * 96f0b2c (HEAD -> new-feature) a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git merge master
+Auto-fusionando data/numero.txt
+CONFLICTO (contenido): Conflicto de fusión en data/numero.txt
+Fusión automática falló; arregle los conflictos y luego realice un commit con el resultado.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* eac973c (master) a 789
+| * 96f0b2c (HEAD -> new-feature) a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git log
+commit 96f0b2cf267390280dd36fa43b00ac68e0c7b561 (HEAD -> new-feature)
+Author: MTB <miribuenot@gmail.com>
+Date:   Sun Nov 2 11:39:01 2025 +0100
+
+    a 3
+
+commit b89736cdae1169a13843b03eb1dd03de99d79c57
+Author: MTB <miribuenot@gmail.com>
+Date:   Sun Nov 2 11:37:53 2025 +0100
+
+    a 2
+
+commit 26398318c346711e3ca5643c63ec18c4de769a9a
+Author: MTB <miribuenot@gmail.com>
+Date:   Sun Nov 2 11:37:32 2025 +0100
+
+    a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git status
+En la rama new-feature
+Tienes rutas no fusionadas.
+  (arregla los conflictos y ejecuta "git commit"
+  (usa "git merge --abort" para abortar la fusion)
+
+Rutas no fusionadas:
+  (usa "git add <archivo>..." para marcar una resolución)
+	modificados por ambos:  data/numero.txt
+
+sin cambios agregados al commit (usa "git add" y/o "git commit -a")
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ nano data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a
+[new-feature 5798aff] Merge branch 'master' into new-feature
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+*   5798aff (HEAD -> new-feature) Merge branch 'master' into new-feature
+|\  
+| * eac973c (master) a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git merge new-feature
+Actualizando eac973c..5798aff
+Fast-forward
+ data/numero.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+*   5798aff (HEAD -> master, new-feature) Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/numero.txt 
+HEAD
+3
+master
+789
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "4" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a -m "a 4"
+[master aef2d6f] a 4
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* aef2d6f (HEAD -> master) a 4
+*   5798aff (new-feature) Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git checkout new-feature 
+Cambiado a rama 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "b" > data/letra.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/letra.txt 
+b
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/numero.txt 
+HEAD
+3
+master
+789
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a -m "b 3"
+[new-feature 0ad1cd4] b 3
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git merge master
+Merge made by the 'ort' strategy.
+ data/numero.txt | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit --amend
+[new-feature baac5d9] b 4
+ Date: Mon Nov 3 08:11:36 2025 +0100
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+*   baac5d9 (HEAD -> new-feature) b 4
+|\  
+| * aef2d6f (master) a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/letra.txt 
+b
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/numero.txt 
+4
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git merge new-feature 
+Actualizando aef2d6f..baac5d9
+Fast-forward
+ data/letra.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/letra.txt 
+b
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/numero.txt 
+4
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git graph
+git: 'graph' no es un comando de git. Mira 'git --help'.
+
+Los comandos más similares son
+	branch
+	grep
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+*   baac5d9 (HEAD -> master, new-feature) b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git checkout new-feature 
+Cambiado a rama 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "5" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/numero.txt 
+5
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/letra.txt 
+b
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a -m "b 5"
+[new-feature bb00853] b 5
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "6" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/numero.txt 
+6
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cat data/letra.txt 
+b
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a -m "b 6"
+[master 86d4827] b 6
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git diff master..new-feature
+diff --git a/data/numero.txt b/data/numero.txt
+index 1e8b314..7ed6ff8 100644
+--- a/data/numero.txt
++++ b/data/numero.txt
+@@ -1 +1 @@
+-6
++5
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git branch
+* master
+  new-feature
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git merge new-feature 
+Auto-fusionando data/numero.txt
+CONFLICTO (contenido): Conflicto de fusión en data/numero.txt
+Fusión automática falló; arregle los conflictos y luego realice un commit con el resultado.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ nano data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a
+[master 747aaeb] b 11
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git rm data/letra.txt 
+rm 'data/letra.txt'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a -m "11"
+[master 03af76e] 11
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 data/letra.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* 03af76e (HEAD -> master) 11
+*   747aaeb b 11
+|\  
+| * bb00853 (new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
