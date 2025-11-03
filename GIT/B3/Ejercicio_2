@@ -1,0 +1,265 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ mkdir beta
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ cd beta/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git init
+ayuda: Usando 'master' como el nombre de la rama inicial. Este nombre de rama predeterminado
+ayuda: está sujeto a cambios. Para configurar el nombre de la rama inicial para usar en todos
+ayuda: de sus nuevos repositorios, reprimiendo esta advertencia, llama a:
+ayuda: 
+ayuda: 	git config --global init.defaultBranch <nombre>
+ayuda: 
+ayuda: Los nombres comúnmente elegidos en lugar de 'master' son 'main', 'trunk' y
+ayuda: 'development'. Se puede cambiar el nombre de la rama recién creada mediante este comando:
+ayuda: 
+ayuda: 	git branch -m <nombre>
+Inicializado repositorio Git vacío en /home/propietario/Documentos/ISI/GIT/beta/.git/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ mkdir data
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "a" > data/letra.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "1" > data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git add data/letra.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git add data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit -m "a 1"
+[master (commit-raíz) 771c2a5] a 1
+ 2 files changed, 2 insertions(+)
+ create mode 100644 data/letra.txt
+ create mode 100644 data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "2" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit -a -m "a 2"
+[master 9b5c95b] a 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph
+* 9b5c95b (HEAD -> master) a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ ^C
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout 9b5c95b
+Nota: cambiando a '9b5c95b'.
+
+Te encuentras en estado 'detached HEAD'. Puedes revisar por aquí, hacer
+cambios experimentales y hacer commits, y puedes descartar cualquier
+commit que hayas hecho en este estado sin impactar a tu rama realizando
+otro checkout.
+
+Si quieres crear una nueva rama para mantener los commits que has creado,
+puedes hacerlo (ahora o después) usando -c con el comando checkout. Ejemplo:
+
+  git switch -c <nombre-de-nueva-rama>
+
+O deshacer la operación con:
+
+  git switch -
+
+Desactiva este aviso poniendo la variable de config advice.detachedHead en false
+
+HEAD está ahora en 9b5c95b a 2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph
+* 9b5c95b (HEAD, master) a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git log
+commit 9b5c95beb186d59261a1bb12ba2a8ebd83476e86 (HEAD, master)
+Author: MTB <miribuenot@gmail.com>
+Date:   Mon Nov 3 08:26:46 2025 +0100
+
+    a 2
+
+commit 771c2a5d76df88e63328fa951ecb23d0328fa15f
+Author: MTB <miribuenot@gmail.com>
+Date:   Mon Nov 3 08:26:11 2025 +0100
+
+    a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "3" data/numero.txt 
+3 data/numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit -a -m "a 3"
+HEAD desacoplada en 9b5c95b
+nada para hacer commit, el árbol de trabajo está limpio
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "3" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit -a -m "a 3"
+[HEAD desacoplado f012caf] a 3
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph 
+* f012caf (HEAD) a 3
+* 9b5c95b (master) a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git branch new-feature
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph 
+* f012caf (HEAD, new-feature) a 3
+* 9b5c95b (master) a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout master
+La posición previa de HEAD era f012caf a 3
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git diff master..new-feature
+diff --git a/data/numero.txt b/data/numero.txt
+index 0cfbf08..00750ed 100644
+--- a/data/numero.txt
++++ b/data/numero.txt
+@@ -1 +1 @@
+-2
++3
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "789" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout master
+M	data/numero.txt
+Ya en 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ cat data/numero.txt 
+789
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "2" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "789" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout new-feature 
+error: Los cambios locales de los siguientes archivos serán sobrescritos por checkout:
+	data/numero.txt
+Por favor realice un commit con los cambios o un stash antes de cambiar ramas.
+Abortando
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "2" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout new-feature 
+Cambiado a rama 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph
+* f012caf (HEAD -> new-feature) a 3
+* 9b5c95b (master) a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git rebase new-feature 
+Rebase aplicado satisfactoriamente y actualizado refs/heads/master.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph
+* f012caf (HEAD -> master, new-feature) a 3
+* 9b5c95b a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "4" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit -a -m "a 4"
+[master 67d21f4] a 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout new-feature
+Cambiado a rama 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "b" > data/letra.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit -a -m "b 3"
+[new-feature cce270d] b 3
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ cat data/letra.txt 
+b
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ cat data/numero.txt 
+3
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git rebase new-feature 
+Rebase aplicado satisfactoriamente y actualizado refs/heads/master.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph
+* d8f51af (HEAD -> master) a 4
+* cce270d (new-feature) b 3
+* f012caf a 3
+* 9b5c95b a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ cat data/numero.txt 
+4
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ cat data/letra.txt 
+b
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit --amend -m "b 4"
+[master b6bfbdc] b 4
+ Date: Mon Nov 3 08:34:19 2025 +0100
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph
+* b6bfbdc (HEAD -> master) b 4
+* cce270d (new-feature) b 3
+* f012caf a 3
+* 9b5c95b a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git branch -f new-feature master
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph
+* b6bfbdc (HEAD -> master, new-feature) b 4
+* cce270d b 3
+* f012caf a 3
+* 9b5c95b a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout new-feature 
+Cambiado a rama 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "5" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ cat data/n
+cat: data/n: No existe el archivo o el directorio
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ cat data/numero.txt 
+5
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ cat data/letra.txt 
+b
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit -a -m "5 b"
+[new-feature 5dd4789] 5 b
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ echo "6">  data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ cat data/numero.txt 
+6
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ cat data/letra.txt 
+b
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit -a -m "b 6"
+[master 69f3522] b 6
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git diff master..new-feature 
+diff --git a/data/numero.txt b/data/numero.txt
+index 1e8b314..7ed6ff8 100644
+--- a/data/numero.txt
++++ b/data/numero.txt
+@@ -1 +1 @@
+-6
++5
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout new-feature 
+Cambiado a rama 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git rebase master
+Auto-fusionando data/numero.txt
+CONFLICTO (contenido): Conflicto de fusión en data/numero.txt
+error: no se pudo aplicar 5dd4789... 5 b
+ayuda: Resolve all conflicts manually, mark them as resolved with
+ayuda: "git add/rm <conflicted_files>", then run "git rebase --continue".
+ayuda: You can instead skip this commit: run "git rebase --skip".
+ayuda: To abort and get back to the state before "git rebase", run "git rebase --abort".
+No se pudo aplicar 5dd4789... 5 b
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ nano data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git add data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git rebase --continue
+[HEAD desacoplado aed21d5] 11 b
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Rebase aplicado satisfactoriamente y actualizado refs/heads/new-feature.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph 
+* aed21d5 (HEAD -> new-feature) 11 b
+* 69f3522 (master) b 6
+* b6bfbdc b 4
+* cce270d b 3
+* f012caf a 3
+* 9b5c95b a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit --amend
+[new-feature 747d4ef] b 11
+ Date: Mon Nov 3 08:39:08 2025 +0100
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph 
+* 747d4ef (HEAD -> new-feature) b 11
+* 69f3522 (master) b 6
+* b6bfbdc b 4
+* cce270d b 3
+* f012caf a 3
+* 9b5c95b a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git rebase new-feature 
+Rebase aplicado satisfactoriamente y actualizado refs/heads/master.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph
+* 747d4ef (HEAD -> master, new-feature) b 11
+* 69f3522 b 6
+* b6bfbdc b 4
+* cce270d b 3
+* f012caf a 3
+* 9b5c95b a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git rm data/letra.txt 
+rm 'data/letra.txt'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ git commit -a -m "11"
+[master a879477] 11
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 data/letra.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ gitgraph
+* a879477 (HEAD -> master) 11
+* 747d4ef (new-feature) b 11
+* 69f3522 b 6
+* b6bfbdc b 4
+* cce270d b 3
+* f012caf a 3
+* 9b5c95b a 2
+* 771c2a5 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/beta$ 
