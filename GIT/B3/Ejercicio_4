@@ -1,0 +1,451 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ cp -r alpha remoteRepo
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ cd remoteRepo/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ gitgraph
+* 03af76e (HEAD -> master) 11
+*   747aaeb b 11
+|\  
+| * bb00853 (new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ cd ../alpha/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git remote add remoteRepo ../remoteRepo
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git remote -v
+remoteRepo	../remoteRepo (fetch)
+remoteRepo	../remoteRepo (push)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cd ../remoteRepo/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ git checkout master
+Ya en 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ echo "12" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ git commit -a -m "12"
+[master c0e972b] 12
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ cd ../alpha
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git fetch remoteRepo master
+remote: Enumerando objetos: 7, listo.
+remote: Contando objetos: 100% (7/7), listo.
+remote: Total 4 (delta 0), reusados 0 (delta 0), pack-reusados 0
+Desempaquetando objetos: 100% (4/4), 258 bytes | 258.00 KiB/s, listo.
+Desde ../remoteRepo
+ * branch            master     -> FETCH_HEAD
+ * [nueva rama]      master     -> remoteRepo/master
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* c0e972b (remoteRepo/master) 12
+* 03af76e (HEAD -> master) 11
+*   747aaeb b 11
+|\  
+| * bb00853 (new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git branch
+* master
+  new-feature
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git checkout master
+Ya en 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git merge FETCH_HEAD 
+Actualizando 03af76e..c0e972b
+Fast-forward
+ data/numero.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* c0e972b (HEAD -> master, remoteRepo/master) 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 (new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git pull remoteRepo master
+Desde ../remoteRepo
+ * branch            master     -> FETCH_HEAD
+Ya está actualizado.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* c0e972b (HEAD -> master, remoteRepo/master) 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 (new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cd ../remoteRepo/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ git pull alpha remoteRepo
+fatal: 'alpha' does not appear to be a git repository
+fatal: No se pudo leer del repositorio remoto.
+
+Por favor asegúrate de que tengas los permisos de acceso correctos
+y que el repositorio exista.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ cd ../alpha/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "13" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a -m "13"
+[master e67b530] 13
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cd ../remoteRepo/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ git remote add alpha ../alpha
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ git pull alpha master
+remote: Enumerando objetos: 7, listo.
+remote: Contando objetos: 100% (7/7), listo.
+remote: Total 4 (delta 0), reusados 0 (delta 0), pack-reusados 0
+Desempaquetando objetos: 100% (4/4), 257 bytes | 257.00 KiB/s, listo.
+Desde ../alpha
+ * branch            master     -> FETCH_HEAD
+ * [nueva rama]      master     -> alpha/master
+Actualizando c0e972b..e67b530
+Fast-forward
+ data/numero.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ gitgraph
+* e67b530 (HEAD -> master, alpha/master) 13
+* c0e972b 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 (new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepo$ cd ../alpha/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* e67b530 (HEAD -> master) 13
+* c0e972b (remoteRepo/master) 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 (new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git pull remoteRepo master
+Desde ../remoteRepo
+ * branch            master     -> FETCH_HEAD
+   c0e972b..e67b530  master     -> remoteRepo/master
+Ya está actualizado.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* e67b530 (HEAD -> master, remoteRepo/master) 13
+* c0e972b 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 (new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cd ..
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ git clone alpha remoteRepoNObare
+Clonando en 'remoteRepoNObare'...
+hecho.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ cd remoteRepoNObare/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoNObare$ gitgraph
+* e67b530 (HEAD -> master, origin/master, origin/HEAD) 13
+* c0e972b 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 (origin/new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoNObare$ git remote -v
+origin	/home/propietario/Documentos/ISI/GIT/alpha (fetch)
+origin	/home/propietario/Documentos/ISI/GIT/alpha (push)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoNObare$ git pull origin master
+Desde /home/propietario/Documentos/ISI/GIT/alpha
+ * branch            master     -> FETCH_HEAD
+Ya está actualizado.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoNObare$ gitgraph
+* e67b530 (HEAD -> master, origin/master, origin/HEAD) 13
+* c0e972b 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 (origin/new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoNObare$ cd ../alpha/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ echo "14" > data/numero.txt 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git commit -a -m "14"
+[master 2ad5984] 14
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git remote add remoteRepoNObare ../remoteRepoNObare/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git remote -v
+remoteRepo	../remoteRepo (fetch)
+remoteRepo	../remoteRepo (push)
+remoteRepoNObare	../remoteRepoNObare/ (fetch)
+remoteRepoNObare	../remoteRepoNObare/ (push)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git push remoteRepoNObare master
+Enumerando objetos: 7, listo.
+Contando objetos: 100% (7/7), listo.
+Escribiendo objetos: 100% (4/4), 277 bytes | 277.00 KiB/s, listo.
+Total 4 (delta 0), reusados 0 (delta 0), pack-reusados 0
+remote: error: refusing to update checked out branch: refs/heads/master
+remote: error: Por defecto, actualizar la rama actual en un repositorio no vacío
+remote: está denegado, porque eso haría el índice y el árbol de trabajo inconsistentes
+remote: con lo que ya se ha empujado, y requeriría 'git reset --hard' para arreglar
+remote: el árbol de trabajo con HEAD.
+remote: 
+remote: Puedes configurar la variable de configuración 'receive.denyCurrentBranch'
+remote: "ignore" o "warn" en el repositorio remoto para permitir
+remote: su rama actual; Sin embargo, esto no se recomienda a menos que tú
+remote: te hayas organizado para actualizar su árbol de trabajo para que coincida con lo que
+remote: enviarás con el empuje de otra manera.
+remote: 
+remote: Para suprimir este mensaje y mantener el comportamiento predeterminado,
+remote: configura 'receive.denyCurrentBranch' a 'refuse'.
+To ../remoteRepoNObare/
+ ! [remote rejected] master -> master (branch is currently checked out)
+error: falló el empuje de algunas referencias a '../remoteRepoNObare/'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* 2ad5984 (HEAD -> master) 14
+* e67b530 (remoteRepo/master) 13
+* c0e972b 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 (new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git remote add remoteRepoNObare ../remoteRepoNObare
+error: remoto remoteRepoNObare ya existe.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git remote add remoteRepoNObareb ../remoteRepoNObare
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git push remoteRepoNObareb master
+Enumerando objetos: 7, listo.
+Contando objetos: 100% (7/7), listo.
+Escribiendo objetos: 100% (4/4), 277 bytes | 277.00 KiB/s, listo.
+Total 4 (delta 0), reusados 0 (delta 0), pack-reusados 0
+remote: error: refusing to update checked out branch: refs/heads/master
+remote: error: Por defecto, actualizar la rama actual en un repositorio no vacío
+remote: está denegado, porque eso haría el índice y el árbol de trabajo inconsistentes
+remote: con lo que ya se ha empujado, y requeriría 'git reset --hard' para arreglar
+remote: el árbol de trabajo con HEAD.
+remote: 
+remote: Puedes configurar la variable de configuración 'receive.denyCurrentBranch'
+remote: "ignore" o "warn" en el repositorio remoto para permitir
+remote: su rama actual; Sin embargo, esto no se recomienda a menos que tú
+remote: te hayas organizado para actualizar su árbol de trabajo para que coincida con lo que
+remote: enviarás con el empuje de otra manera.
+remote: 
+remote: Para suprimir este mensaje y mantener el comportamiento predeterminado,
+remote: configura 'receive.denyCurrentBranch' a 'refuse'.
+To ../remoteRepoNObare
+ ! [remote rejected] master -> master (branch is currently checked out)
+error: falló el empuje de algunas referencias a '../remoteRepoNObare'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cd ../remoteRepoNObare/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoNObare$ gitgra`h
+> ^C
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoNObare$ gitgraph
+* e67b530 (HEAD -> master, origin/master, origin/HEAD) 13
+* c0e972b 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 (origin/new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoNObare$ cd ..
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ git clone remoteRepoNObare remoteRepoBare --bare
+Clonando en un repositorio vacío 'remoteRepoBare'...
+hecho.
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ cd remoteRepoBare/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoBare$ gitgraph
+* e67b530 (HEAD -> master) 13
+* c0e972b 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoBare$ cd ../alpha/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git remote add remoteRepoBare ../remoteRepoBare
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ git push remoteRepoBare master
+Enumerando objetos: 7, listo.
+Contando objetos: 100% (7/7), listo.
+Escribiendo objetos: 100% (4/4), 277 bytes | 277.00 KiB/s, listo.
+Total 4 (delta 0), reusados 0 (delta 0), pack-reusados 0
+To ../remoteRepoBare
+   e67b530..2ad5984  master -> master
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ gitgraph
+* 2ad5984 (HEAD -> master, remoteRepoBare/master) 14
+* e67b530 (remoteRepo/master) 13
+* c0e972b 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 (new-feature) b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/alpha$ cd ../remoteRepoBare/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoBare$ gitgraph
+* 2ad5984 (HEAD -> master) 14
+* e67b530 13
+* c0e972b 12
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/remoteRepoBare$ 
+
