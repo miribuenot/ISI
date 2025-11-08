@@ -1,7 +1,7 @@
 ---- MODULE thermometer_minute_clock_pluscal ----
 EXTENDS Integers
 
-RANGE_TEMPS == (-1..1)
+RANGE_TEMPS == (-20..60)
 MAX_INCREMENT == 5
 RANGE_HOURS == (1..12)
 RANGE_MINS == (0..59)
