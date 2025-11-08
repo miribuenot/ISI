@@ -1,0 +1,48 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git branch --merged
+  devel
+* master
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+* 2770ecb (bugFix) Cambiada Leche por Leche desnatada
+| * a010e1a (HEAD -> master, devel) añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git branch -d devel
+Eliminada la rama devel (era a010e1a).
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+* 2770ecb (bugFix) Cambiada Leche por Leche desnatada
+| * a010e1a (HEAD -> master) añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git branch -d bugFix
+error: the branch 'bugFix' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D bugFix'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s1
+Leche
+Tomate pelado
+Tomate ecológico
+Queso
+Yoghourt griego
+Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s2
+Leche
+Tomate pelado
+Tomate ecológico
+Queso
+Yoghourt griego
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout bugFix
+Cambiado a rama 'bugFix'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s1
+Leche desnatada
+Tomate pelado
+Tomate ecológico
+Queso
+Yoghourt griego
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ cat s2
+Leche
+Tomate pelado
+Tomate ecológico
+Queso
+Yoghourt griego
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ 

@@ -1,0 +1,36 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git merge bugFix
+Auto-fusionando s1
+Merge made by the 'ort' strategy.
+ s1 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+*   acda66b (HEAD -> master) C5: Merge branch 'bugFix'
+|\  
+| * 2770ecb (bugFix) Cambiada Leche por Leche desnatada
+* | a010e1a añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git diff master..bugFix
+diff --git a/s1 b/s1
+index e51ea94..9384b0e 100644
+--- a/s1
++++ b/s1
+@@ -3,4 +3,3 @@ Tomate pelado
+ Tomate ecológico
+ Queso
+ Yoghourt griego
+-Fregona
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ git branch -d bugFix
+Eliminada la rama bugFix (era 2770ecb).
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ gitgraph
+*   acda66b (HEAD -> master) C5: Merge branch 'bugFix'
+|\  
+| * 2770ecb Cambiada Leche por Leche desnatada
+* | a010e1a añadida Fregona
+|/  
+* 37c06b4 creado s2
+* 1b2b9f4 creado s1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-3$ 

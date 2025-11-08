@@ -1,0 +1,98 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ mkdir ejercicio-1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ cd ejercicio-1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git init
+ayuda: Usando 'master' como el nombre de la rama inicial. Este nombre de rama predeterminado
+ayuda: está sujeto a cambios. Para configurar el nombre de la rama inicial para usar en todos
+ayuda: de sus nuevos repositorios, reprimiendo esta advertencia, llama a:
+ayuda: 
+ayuda: 	git config --global init.defaultBranch <nombre>
+ayuda: 
+ayuda: Los nombres comúnmente elegidos en lugar de 'master' son 'main', 'trunk' y
+ayuda: 'development'. Se puede cambiar el nombre de la rama recién creada mediante este comando:
+ayuda: 
+ayuda: 	git branch -m <nombre>
+Inicializado repositorio Git vacío en /home/propietario/Documentos/ISI/GIT/ejercicio-1/.git/
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ touch f1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ touch f2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git add f1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git add f2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git commit -m "creados f1, f2"
+[master (commit-raíz) 01ee1fe] creados f1, f2
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 f1
+ create mode 100644 f2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ gitgraph
+* 01ee1fe (HEAD -> master) creados f1, f2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ echo "hola" > f1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ cat f1
+hola
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git commit -a -m "f1 ahora tiene 'hola'"
+[master 2bf8133] f1 ahora tiene 'hola'
+ 1 file changed, 1 insertion(+)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ gitgraph
+* 2bf8133 (HEAD -> master) f1 ahora tiene 'hola'
+* 01ee1fe creados f1, f2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git rm f2
+rm 'f2'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git commit -m "borrado f2"
+[master f23f8c8] borrado f2
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 f2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ gitgraph
+* f23f8c8 (HEAD -> master) borrado f2
+* 2bf8133 f1 ahora tiene 'hola'
+* 01ee1fe creados f1, f2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git log
+commit f23f8c85bf101a22fe77a4ada6c23cbc6576111d (HEAD -> master)
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 08:40:52 2025 +0100
+
+    borrado f2
+
+commit 2bf81331d8bce1f6b5b5b627d45f80eadfea651c
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 08:39:18 2025 +0100
+
+    f1 ahora tiene 'hola'
+
+commit 01ee1fe3e04f1c8f03e4d42cb850c68375e2a47d
+Author: MTB <miribuenot@gmail.com>
+Date:   Wed Oct 29 08:37:18 2025 +0100
+
+    creados f1, f2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git status
+En la rama master
+nada para hacer commit, el árbol de trabajo está limpio
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git ls-tree 2bf81331d8bce1f6b5b5b627d45f80eadfea651c
+100644 blob 5c1b14949828006ed75a3e8858957f86a2f7e2eb	f1
+100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391	f2
+
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git cat-file -p e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 > f2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git status
+En la rama master
+Archivos sin seguimiento:
+  (usa "git add <archivo>..." para incluirlo a lo que será confirmado)
+	f2
+
+no hay nada agregado al commit pero hay archivos sin seguimiento presentes (usa "git add" para hacerles seguimiento)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ echo "adios" >> f1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ cat f1
+hola
+adios
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git add f1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git add f2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git status
+En la rama master
+Cambios a ser confirmados:
+  (usa "git restore --staged <archivo>..." para sacar del área de stage)
+	modificados:     f1
+	nuevos archivos: f2
+
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ git commit --amend -m "modificado f1 y añadido nuevo f2"
+[master ce9a2d1] modificado f1 y añadido nuevo f2
+ Date: Wed Oct 29 08:40:52 2025 +0100
+ 1 file changed, 1 insertion(+)
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/ejercicio-1$ gitgraph
+* ce9a2d1 (HEAD -> master) modificado f1 y añadido nuevo f2
+* 2bf8133 f1 ahora tiene 'hola'
+* 01ee1fe creados f1, f2

@@ -1,0 +1,227 @@
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ cp -r alpha gamma
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT$ cd gamma
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git branch -f new-feature master
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ gitgraph
+* 03af76e (HEAD -> master, new-feature) 11
+*   747aaeb b 11
+|\  
+| * bb00853 b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ touch data/Complex.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git rm data/Complex.java 
+fatal: ruta especificada 'data/Complex.java' no concordó con ningún archivo
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ rm data/Complex.java 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git checkout new-feature 
+Cambiado a rama 'new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ touch data/Complex.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ nano data/Complex.java 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git add data/Complex.java 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git commit -m "11 Complex"
+[new-feature f62f35b] 11 Complex
+ 1 file changed, 8 insertions(+)
+ create mode 100644 data/Complex.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git branch new-feature-2
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ touch data/Point.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ nano data/P
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ cat data/Point.java
+public class Point {
+	private double x;
+	private double y;
+
+	public Point(double x, double y) {
+		this.x = x;
+		this.y = y;
+	}
+}
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git add data/Point.java 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git commit -m "11 Point"
+[master edd71e8] 11 Point
+ 1 file changed, 9 insertions(+)
+ create mode 100644 data/Point.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git rm -r data/Point.java
+rm 'data/Point.java'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git status
+En la rama master
+Cambios a ser confirmados:
+  (usa "git restore --staged <archivo>..." para sacar del área de stage)
+	borrados:        data/Point.java
+
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git reset --hard HEAD~1
+HEAD está ahora en 03af76e 11
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ gitgraph
+* f62f35b (new-feature) 11 Complex
+* 03af76e (HEAD -> master, new-feature-2) 11
+*   747aaeb b 11
+|\  
+| * bb00853 b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ ls data
+numero.txt
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git checkout new-feature-2
+Cambiado a rama 'new-feature-2'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ touch data/Point.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ nano data/Point.java 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git add data/Point.java 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git commit -m "11 Point"
+[new-feature-2 f807a71] 11 Point
+ 1 file changed, 9 insertions(+)
+ create mode 100644 data/Point.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ gitgraph
+* f807a71 (HEAD -> new-feature-2) 11 Point
+| * f62f35b (new-feature) 11 Complex
+|/  
+* 03af76e (master) 11
+*   747aaeb b 11
+|\  
+| * bb00853 b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git checkout master
+Cambiado a rama 'master'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ touch data/Main.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ nano data/Main.java 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git add data/M
+fatal: ruta especificada 'data/M' no concordó con ningún archivo
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git add data/Main.java 
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git commit -m "11 Main"
+[master adeeabc] 11 Main
+ 1 file changed, 5 insertions(+)
+ create mode 100644 data/Main.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ gitgraph
+* adeeabc (HEAD -> master) 11 Main
+| * f807a71 (new-feature-2) 11 Point
+|/  
+| * f62f35b (new-feature) 11 Complex
+|/  
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git cherry-pick f807a71
+[master 3e5b2c9] 11 Point
+ Date: Mon Nov 3 21:07:21 2025 +0100
+ 1 file changed, 9 insertions(+)
+ create mode 100644 data/Point.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git --amend -m "11 Main-Point"
+opción --amend desconocida
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--config-env=<name>=<envvar>] <command> [<args>]
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git commit --amend -m "11 Main-Point"
+[master 08419e3] 11 Main-Point
+ Date: Mon Nov 3 21:07:21 2025 +0100
+ 1 file changed, 9 insertions(+)
+ create mode 100644 data/Point.java
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ gitgraph
+* 08419e3 (HEAD -> master) 11 Main-Point
+* adeeabc 11 Main
+| * f807a71 (new-feature-2) 11 Point
+|/  
+| * f62f35b (new-feature) 11 Complex
+|/  
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git branch -d new-feature
+error: the branch 'new-feature' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D new-feature'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git branch -D new-feature
+Eliminada la rama new-feature (era f62f35b).
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git branch -d new-feature-2
+error: the branch 'new-feature-2' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D new-feature-2'
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ git branch -D new-feature-2
+Eliminada la rama new-feature-2 (era f807a71).
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ gitgraph
+* 08419e3 (HEAD -> master) 11 Main-Point
+* adeeabc 11 Main
+* 03af76e 11
+*   747aaeb b 11
+|\  
+| * bb00853 b 5
+* | 86d4827 b 6
+|/  
+*   baac5d9 b 4
+|\  
+| * aef2d6f a 4
+* | 0ad1cd4 b 3
+|/  
+*   5798aff Merge branch 'master' into new-feature
+|\  
+| * eac973c a 789
+* | 96f0b2c a 3
+|/  
+* b89736c a 2
+* 2639831 a 1
+propietario@propietario-ASUS-TUF-Gaming-F15-FX506LH-FX506LH:~/Documentos/ISI/GIT/gamma$ 
