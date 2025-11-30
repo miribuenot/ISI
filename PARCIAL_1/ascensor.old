@@ -1,0 +1,79 @@
+---- MODULE ascensor ----
+EXTENDS Naturals, FiniteSets
+
+CONSTANTS PISOS \* Ejemplo: {1, 2, 3, 4}
+
+(* --algorithm ascensor {
+
+variables
+    piso = 1,              \* Empezamos en el 1 (o elige uno de PISOS)
+    requests = {},         \* Conjunto vacio
+    door = "CLOSE",        \* "OPEN" o "CLOSE"
+    direction = "STOP";    \* "UP", "DOWN", "STOP"
+
+\* --- PROCESO USUARIO: Solo añade peticiones ---
+fair process (AddPiso = "AddPiso")
+{AddPiso:
+    while(TRUE){
+        with(p \in PISOS){
+            requests := requests \union {p};
+        };
+    }
+}
+
+\* --- PROCESO ASCENSOR: El cerebro ---
+fair process (Elevator = "Elevator")
+{Elevator:
+    while(TRUE){
+        
+        \* 1. COMPROBAR SI HEMOS LLEGADO
+        if (piso \in requests) {
+            requests := requests \ {piso}; \* Recuerda: restar conjuntos con { }
+        };
+
+        \* 2. DECIDIR DIRECCION (Corregido 'else if')
+        if (direction = "STOP") {
+            if (\E p \in requests : p > piso) { 
+                direction := "UP"; 
+            }
+            else if (\E p \in requests : p < piso) {  \* <--- AQUI EL CAMBIO
+                direction := "DOWN"; 
+            }
+        }
+        else if (direction = "UP") {                  \* <--- AQUI EL CAMBIO
+            if (\A p \in requests : p <= piso) {
+                if (\E p \in requests : p < piso) { 
+                    direction := "DOWN"; 
+                }
+                else { 
+                    direction := "STOP"; 
+                }
+            }
+        }
+        else if (direction = "DOWN") {                \* <--- AQUI EL CAMBIO
+            if (\A p \in requests : p >= piso) {
+                if (\E p \in requests : p > piso) { 
+                    direction := "UP"; 
+                }
+                else { 
+                    direction := "STOP"; 
+                }
+            }
+        };
+
+        \* 3. MOVER EL ASCENSOR
+        if (door = "CLOSE" /\ direction /= "STOP") {
+            if (direction = "UP" /\ piso < 4) { 
+                piso := piso + 1;
+            }
+            else if (direction = "DOWN" /\ piso > 1) { \* <--- AQUI EL CAMBIO
+                 piso := piso - 1;
+            }
+        }
+    }
+}
+
+}
+*)
+
+====
