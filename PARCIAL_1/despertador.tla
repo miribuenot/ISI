@@ -1,0 +1,225 @@
+---- MODULE despertador ----
+EXTENDS Naturals
+
+RANGE_HOURS == 1..12
+RANGE_MINS == 0..59
+RANGE_IND == {"AM", "PM"}
+
+(* --algorithm despertador {
+
+variables
+    hr \in RANGE_HOURS,
+    min \in RANGE_MINS,
+    ind \in RANGE_IND,
+    \* Usamos un Record para la alarma. Inicialmente valores nulos o imposibles.
+    \* O mejor, usamos una variable booleana para saber si está puesta.
+    al_h = 12, al_m = 0, al_i = "AM",
+    is_alarm_set = FALSE, 
+    sound = "OFF",
+    timer = 0; \* Contador para los 5 minutos
+
+fair process (Clock = "Clock")
+{Clock:  
+    while (TRUE) {
+    Tick:
+        \* 1. AVANCE DEL TIEMPO (Igual que antes)
+        if (min < 59) {
+            min := min + 1;
+        }
+        else {
+            min := 0;
+            if (hr = 11) {
+                hr := 12;
+                ind := IF ind = "AM" THEN "PM" ELSE "AM";
+            }
+            else if (hr = 12) {
+                hr := 1;
+            }
+            else {
+                hr := hr + 1;
+            }
+        };
+
+        \* 2. LÓGICA DE ALARMA UNIFICADA
+        \* Usamos ELSE para evitar modificar 'timer' dos veces en el mismo paso.
+        
+        if (is_alarm_set /\ sound = "OFF" /\ hr = al_h /\ min = al_m /\ ind = al_i) {
+            \* CASO A: La alarma se dispara AHORA MISMO
+            sound := "ON";
+            timer := 0; 
+        }
+        else if (sound = "ON") {
+            \* CASO B: La alarma YA estaba sonando, contamos el tiempo
+            timer := timer + 1;
+            if (timer >= 5) {
+                sound := "OFF";
+            }
+        };
+        \* CASO C: Ni salta la alarma ni está sonando -> No hacemos nada con timer/sound
+    }
+}
+
+\* BOTÓN DE APAGAR SONIDO (Requisito 3)
+fair process (StopSoundButton = "StopSound")
+{StopSound:
+    while(TRUE) {
+        await (sound = "ON"); \* Solo tiene efecto si está sonando
+        sound := "OFF";
+        \* La alarma sigue programada (is_alarm_set sigue TRUE), sonará en 12/24h
+    }
+}
+
+\* BOTÓN DE DESPROGRAMAR ALARMA (Requisito 5)
+fair process (UnsetAlarmButton = "UnsetAlarm")
+{UnsetAlarm:
+    while(TRUE) {
+        await (is_alarm_set = TRUE); \* Solo si hay alarma puesta
+        is_alarm_set := FALSE;
+        sound := "OFF"; \* Si estaba sonando, también se calla al quitar la alarma
+    }
+}
+
+fair process (SetAlarm = "SetAlarm")
+{SetAlarm:
+    while(TRUE) {
+        with(new_h \in RANGE_HOURS){
+            al_h := new_h;
+        };
+
+        with(new_m \in RANGE_MINS){
+            al_m := new_m;
+        };
+
+        with(new_i \in RANGE_IND){
+            al_i := new_i;
+        };
+
+        is_alarm_set := TRUE;
+
+        sound := "OFF";
+
+        timer := 0;
+    }
+}
+
+}
+*)
+\* BEGIN TRANSLATION (chksum(pcal) = "3ec825fc" /\ chksum(tla) = "357b8080")
+\* Label Clock of process Clock at line 23 col 5 changed to Clock_
+\* Label SetAlarm of process SetAlarm at line 84 col 5 changed to SetAlarm_
+VARIABLES pc, hr, min, ind, al_h, al_m, al_i, is_alarm_set, sound, timer
+
+vars == << pc, hr, min, ind, al_h, al_m, al_i, is_alarm_set, sound, timer >>
+
+ProcSet == {"Clock"} \cup {"StopSound"} \cup {"UnsetAlarm"} \cup {"SetAlarm"}
+
+Init == (* Global variables *)
+        /\ hr \in RANGE_HOURS
+        /\ min \in RANGE_MINS
+        /\ ind \in RANGE_IND
+        /\ al_h = 12
+        /\ al_m = 0
+        /\ al_i = "AM"
+        /\ is_alarm_set = FALSE
+        /\ sound = "OFF"
+        /\ timer = 0
+        /\ pc = [self \in ProcSet |-> CASE self = "Clock" -> "Clock_"
+                                        [] self = "StopSound" -> "StopSound"
+                                        [] self = "UnsetAlarm" -> "UnsetAlarm"
+                                        [] self = "SetAlarm" -> "SetAlarm_"]
+
+Clock_ == /\ pc["Clock"] = "Clock_"
+          /\ pc' = [pc EXCEPT !["Clock"] = "Tick"]
+          /\ UNCHANGED << hr, min, ind, al_h, al_m, al_i, is_alarm_set, sound, 
+                          timer >>
+
+Tick == /\ pc["Clock"] = "Tick"
+        /\ IF min < 59
+              THEN /\ min' = min + 1
+                   /\ UNCHANGED << hr, ind >>
+              ELSE /\ min' = 0
+                   /\ IF hr = 11
+                         THEN /\ hr' = 12
+                              /\ ind' = (IF ind = "AM" THEN "PM" ELSE "AM")
+                         ELSE /\ IF hr = 12
+                                    THEN /\ hr' = 1
+                                    ELSE /\ hr' = hr + 1
+                              /\ ind' = ind
+        /\ IF is_alarm_set /\ sound = "OFF" /\ hr' = al_h /\ min' = al_m /\ ind' = al_i
+              THEN /\ sound' = "ON"
+                   /\ timer' = 0
+              ELSE /\ IF sound = "ON"
+                         THEN /\ timer' = timer + 1
+                              /\ IF timer' >= 5
+                                    THEN /\ sound' = "OFF"
+                                    ELSE /\ TRUE
+                                         /\ sound' = sound
+                         ELSE /\ TRUE
+                              /\ UNCHANGED << sound, timer >>
+        /\ pc' = [pc EXCEPT !["Clock"] = "Clock_"]
+        /\ UNCHANGED << al_h, al_m, al_i, is_alarm_set >>
+
+Clock == Clock_ \/ Tick
+
+StopSound == /\ pc["StopSound"] = "StopSound"
+             /\ (sound = "ON")
+             /\ sound' = "OFF"
+             /\ pc' = [pc EXCEPT !["StopSound"] = "StopSound"]
+             /\ UNCHANGED << hr, min, ind, al_h, al_m, al_i, is_alarm_set, 
+                             timer >>
+
+StopSoundButton == StopSound
+
+UnsetAlarm == /\ pc["UnsetAlarm"] = "UnsetAlarm"
+              /\ (is_alarm_set = TRUE)
+              /\ is_alarm_set' = FALSE
+              /\ sound' = "OFF"
+              /\ pc' = [pc EXCEPT !["UnsetAlarm"] = "UnsetAlarm"]
+              /\ UNCHANGED << hr, min, ind, al_h, al_m, al_i, timer >>
+
+UnsetAlarmButton == UnsetAlarm
+
+SetAlarm_ == /\ pc["SetAlarm"] = "SetAlarm_"
+             /\ \E new_h \in RANGE_HOURS:
+                  al_h' = new_h
+             /\ \E new_m \in RANGE_MINS:
+                  al_m' = new_m
+             /\ \E new_i \in RANGE_IND:
+                  al_i' = new_i
+             /\ is_alarm_set' = TRUE
+             /\ sound' = "OFF"
+             /\ timer' = 0
+             /\ pc' = [pc EXCEPT !["SetAlarm"] = "SetAlarm_"]
+             /\ UNCHANGED << hr, min, ind >>
+
+SetAlarm == SetAlarm_
+
+Next == Clock \/ StopSoundButton \/ UnsetAlarmButton \/ SetAlarm
+
+Spec == /\ Init /\ [][Next]_vars
+        /\ WF_vars(Clock)
+        /\ WF_vars(StopSoundButton)
+        /\ WF_vars(UnsetAlarmButton)
+        /\ WF_vars(SetAlarm)
+
+\* END TRANSLATION 
+
+TypeOk ==
+    /\ al_h \in RANGE_HOURS
+    /\ al_m \in RANGE_MINS
+    /\ al_i \in RANGE_IND
+
+Temp == timer \in (0..5)
+
+SoundOK == (sound = "ON") => is_alarm_set
+
+StartSound == (/\ is_alarm_set 
+            /\ (hr = al_h) 
+            /\ (min = al_m) 
+            /\ (ind = al_i)) ~> sound = "ON"
+
+OffSound == (sound = "ON") ~> sound = "OFF"
+
+TempOk == [][(sound' = "OFF" /\ sound = sound') => timer' = timer]_vars
+
+====

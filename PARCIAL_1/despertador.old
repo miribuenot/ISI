@@ -13,7 +13,7 @@ variables
     ind \in RANGE_IND,
     \* Usamos un Record para la alarma. Inicialmente valores nulos o imposibles.
     \* O mejor, usamos una variable booleana para saber si está puesta.
-    al_h = 0, al_m = 0, al_i = "AM",
+    al_h = 12, al_m = 0, al_i = "AM",
     is_alarm_set = FALSE, 
     sound = "OFF",
     timer = 0; \* Contador para los 5 minutos
@@ -79,21 +79,45 @@ fair process (UnsetAlarmButton = "UnsetAlarm")
     }
 }
 
+fair process (SetAlarm = "SetAlarm")
+{SetAlarm:
+    while(TRUE) {
+        with(new_h \in RANGE_HOURS){
+            al_h := new_h;
+        };
+
+        with(new_m \in RANGE_MINS){
+            al_m := new_m;
+        };
+
+        with(new_i \in RANGE_IND){
+            al_i := new_i;
+        };
+
+        is_alarm_set := TRUE;
+
+        sound := "OFF";
+
+        timer := 0;
+    }
+}
+
 }
 *)
-\* BEGIN TRANSLATION (chksum(pcal) = "41e8f0ea" /\ chksum(tla) = "5309179a")
+\* BEGIN TRANSLATION (chksum(pcal) = "7695e02" /\ chksum(tla) = "8b94501c")
 \* Label Clock of process Clock at line 23 col 5 changed to Clock_
+\* Label SetAlarm of process SetAlarm at line 84 col 5 changed to SetAlarm_
 VARIABLES pc, hr, min, ind, al_h, al_m, al_i, is_alarm_set, sound, timer
 
 vars == << pc, hr, min, ind, al_h, al_m, al_i, is_alarm_set, sound, timer >>
 
-ProcSet == {"Clock"} \cup {"StopSound"} \cup {"UnsetAlarm"}
+ProcSet == {"Clock"} \cup {"StopSound"} \cup {"UnsetAlarm"} \cup {"SetAlarm"}
 
 Init == (* Global variables *)
         /\ hr \in RANGE_HOURS
         /\ min \in RANGE_MINS
         /\ ind \in RANGE_IND
-        /\ al_h = 0
+        /\ al_h = 12
         /\ al_m = 0
         /\ al_i = "AM"
         /\ is_alarm_set = FALSE
@@ -101,7 +125,8 @@ Init == (* Global variables *)
         /\ timer = 0
         /\ pc = [self \in ProcSet |-> CASE self = "Clock" -> "Clock_"
                                         [] self = "StopSound" -> "StopSound"
-                                        [] self = "UnsetAlarm" -> "UnsetAlarm"]
+                                        [] self = "UnsetAlarm" -> "UnsetAlarm"
+                                        [] self = "SetAlarm" -> "SetAlarm_"]
 
 Clock_ == /\ pc["Clock"] = "Clock_"
           /\ pc' = [pc EXCEPT !["Clock"] = "Tick"]
@@ -154,13 +179,35 @@ UnsetAlarm == /\ pc["UnsetAlarm"] = "UnsetAlarm"
 
 UnsetAlarmButton == UnsetAlarm
 
-Next == Clock \/ StopSoundButton \/ UnsetAlarmButton
+SetAlarm_ == /\ pc["SetAlarm"] = "SetAlarm_"
+             /\ \E new_h \in RANGE_HOURS:
+                  al_h' = new_h
+             /\ \E new_m \in RANGE_MINS:
+                  al_m' = new_m
+             /\ \E new_i \in RANGE_IND:
+                  al_i' = new_i
+             /\ is_alarm_set' = TRUE
+             /\ sound' = "OFF"
+             /\ pc' = [pc EXCEPT !["SetAlarm"] = "SetAlarm_"]
+             /\ UNCHANGED << hr, min, ind, timer >>
+
+SetAlarm == SetAlarm_
+
+Next == Clock \/ StopSoundButton \/ UnsetAlarmButton \/ SetAlarm
 
 Spec == /\ Init /\ [][Next]_vars
         /\ WF_vars(Clock)
         /\ WF_vars(StopSoundButton)
         /\ WF_vars(UnsetAlarmButton)
+        /\ WF_vars(SetAlarm)
 
 \* END TRANSLATION 
+
+TypeOk ==
+    /\ al_h \in RANGE_HOURS
+    /\ al_m \in RANGE_MINS
+    /\ al_i \in RANGE_IND
+
+
 
 ====
