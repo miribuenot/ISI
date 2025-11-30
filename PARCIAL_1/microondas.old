@@ -1,0 +1,145 @@
+---- MODULE microondas ----
+EXTENDS Naturals
+
+(* --algorithm microondas{
+
+variables
+    temp = 0,
+    light = FALSE,
+    door = "OPEN",
+    coccion = FALSE;
+
+fair process (PressStart = "PressStart")
+{PressStart:
+    while(TRUE){
+        when(door = "CLOSE" /\ temp > 0);
+        coccion := TRUE;
+        light := TRUE;
+    }
+}
+
+fair process (Microwave = "Microwave")
+{Microwave:
+    while(TRUE){
+        when(door = "CLOSE" /\ coccion);
+        if(temp > 0){
+            temp := temp -1;
+        }
+        else{
+            light := FALSE;
+            coccion := FALSE;
+        }
+
+    }
+}
+
+fair process (OpenDoor = "OpenDoor")
+{OpenDoor:
+    while(TRUE){
+        when(door = "CLOSE");
+        door := "OPEN";
+        light := TRUE;
+        coccion := FALSE;
+    }
+
+}
+
+fair process (CloseDoor = "CloseDoor")
+{CloseDoor:
+    while(TRUE){
+        when(door = "OPEN"); 
+        door := "CLOSE";
+        light := FALSE;
+    }
+}
+
+fair process (SetTime = "SetTime")
+{SetTime:
+    while(TRUE){
+        when(coccion # TRUE);
+        
+        with(t \in (0..10)){
+            temp := t;
+        }
+    }
+
+}
+
+
+}
+*)
+\* BEGIN TRANSLATION (chksum(pcal) = "40533943" /\ chksum(tla) = "6ea9f1b3")
+\* Label PressStart of process PressStart at line 14 col 5 changed to PressStart_
+\* Label Microwave of process Microwave at line 23 col 5 changed to Microwave_
+\* Label OpenDoor of process OpenDoor at line 38 col 5 changed to OpenDoor_
+\* Label CloseDoor of process CloseDoor at line 49 col 5 changed to CloseDoor_
+\* Label SetTime of process SetTime at line 58 col 5 changed to SetTime_
+VARIABLES temp, light, door, coccion
+
+vars == << temp, light, door, coccion >>
+
+ProcSet == {"PressStart"} \cup {"Microwave"} \cup {"OpenDoor"} \cup {"CloseDoor"} \cup {"SetTime"}
+
+Init == (* Global variables *)
+        /\ temp = 0
+        /\ light = FALSE
+        /\ door = "OPEN"
+        /\ coccion = FALSE
+
+PressStart == /\ (door = "CLOSE" /\ temp > 0)
+              /\ coccion' = TRUE
+              /\ light' = TRUE
+              /\ UNCHANGED << temp, door >>
+
+Microwave == /\ (door = "CLOSE" /\ coccion)
+             /\ IF temp > 0
+                   THEN /\ temp' = temp -1
+                        /\ UNCHANGED << light, coccion >>
+                   ELSE /\ light' = FALSE
+                        /\ coccion' = FALSE
+                        /\ temp' = temp
+             /\ door' = door
+
+OpenDoor == /\ (door = "CLOSE")
+            /\ door' = "OPEN"
+            /\ light' = TRUE
+            /\ coccion' = FALSE
+            /\ temp' = temp
+
+CloseDoor == /\ (door = "OPEN")
+             /\ door' = "CLOSE"
+             /\ light' = FALSE
+             /\ UNCHANGED << temp, coccion >>
+
+SetTime == /\ \E t \in (0..10):
+                temp' = t
+           /\ UNCHANGED << light, door, coccion >>
+
+Next == PressStart \/ Microwave \/ OpenDoor \/ CloseDoor \/ SetTime
+
+Spec == /\ Init /\ [][Next]_vars
+        /\ WF_vars(PressStart)
+        /\ WF_vars(Microwave)
+        /\ WF_vars(OpenDoor)
+        /\ WF_vars(CloseDoor)
+        /\ WF_vars(SetTime)
+
+\* END TRANSLATION 
+
+DoorSafety == door = "OPEN" => coccion # TRUE
+
+DoorPause == [][door' = "OPEN" => coccion' # TRUE]_vars
+
+StartCoccion == [][(coccion = FALSE)/\(coccion') => (door = "CLOSE")/\ (temp > 0)]_vars
+
+LightOn == light => (\/ ((door = "CLOSE")/\coccion)
+                    \/ door = "OPEN")
+
+StartLight == [][(\/(coccion =  FALSE /\ coccion')
+                \/(door = "CLOSE" /\ door' = "OPEN")) => light']_vars
+
+TempOK == temp >= 0
+
+Temp0 == [][temp = 0 /\ door' = "CLOSE"=> light' = FALSE /\ coccion' = FALSE]_vars
+
+====
