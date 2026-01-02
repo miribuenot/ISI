@@ -1,0 +1,14 @@
+DESCRIPCIÓN DE LAS ENTRADAS			||	TEST
+-------------------------------------------------------------
+No se pasa una lista				||	A1
+Se pasas una lista de menos de 2 elementos	||	A2
+Alguno de los elementos no es un entero		||	B
+Dos números iguales				||	C1
+Dos números en orden ascendente			||	C2
+Dos números en orden descendente		||	C3
+Tres números en orden ascendente		||	D1
+Tres números en orden descendente		||	D2
+Tres números en otro orden1			||	D3
+Tres números en otro orden2			||	D4
+Tres números en otro orden3			||	D5
+Tres números en otro orden 4			||	D6
