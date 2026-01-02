@@ -1,0 +1,9 @@
+DESCRIPCIÓN DE LAS ENTRADAS			||	TEST
+-------------------------------------------------------------
+Le pasas 1 argumento				||	A1
+Le pasas 2 argumentos				||	A2
+No pasas ningún argumento			||	A3
+Una fecha inválida				||	A3
+Dos números iguales				||	C1
+Fecha en un año bisiesto			||	C2
+Fecha en un año no bisiesto			||	C3
